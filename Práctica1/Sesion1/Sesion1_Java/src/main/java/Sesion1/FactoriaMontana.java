@@ -5,14 +5,12 @@ public class FactoriaMontana extends FactoriaCarreraYBicicleta {
 
         @Override
 	public CarreraMontana crearCarrera() {
-		// TODO - implement FactoriaMontana.crearCarrera
-		throw new UnsupportedOperationException();
+            return new CarreraMontana();
 	}
 
         @Override
 	public BicicletaMontana crearBicicleta() {
-		// TODO - implement FactoriaMontana.crearBicicleta
-		throw new UnsupportedOperationException();
+            return new BicicletaMontana();
 	}
 
 }
