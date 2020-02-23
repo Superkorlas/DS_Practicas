@@ -38,7 +38,8 @@ public class Client {
         }
         System.out.println("Carrera de montana:\n" + carreraMontana.toString());
         
-        //@TODO: ejecutar la carrera
-        
+        //Inicio de ambas carreras.
+        carreraCarretera.iniciarCarrera();
+        carreraMontana.iniciarCarrera();
     }
 }
