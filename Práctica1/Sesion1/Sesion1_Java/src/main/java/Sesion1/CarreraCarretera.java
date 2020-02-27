@@ -3,8 +3,11 @@ package Sesion1;
 
 public class CarreraCarretera extends Carrera  {
     
-    public CarreraCarretera() {
+    public CarreraCarretera(int numBicicletas) {
         this.tasaAbandono = 10;
+        FactoriaCarretera factoria = new FactoriaCarretera();
+        this.CrearBicicletas(factoria, numBicicletas);
+        this.iniciarCarrera();
     }
 
     @Override

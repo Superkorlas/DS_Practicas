@@ -6,7 +6,14 @@ import java.util.ArrayList;
 public abstract class Carrera {
     protected ArrayList<Bicicleta> bicicletas = new ArrayList<>();
     protected float tasaAbandono;
-    protected float duracionCarrera = 60;
+    protected float duracionCarrera = 10;
+    
+    protected void CrearBicicletas(FactoriaCarreraYBicicleta factoria, int numBicicletas) {
+        for (int i = 0; i < numBicicletas; i++) {
+            Bicicleta bicicleta = factoria.crearBicicleta();
+            this.anadirBicicleta(bicicleta);
+        }
+    }
     
     public void anadirBicicleta(Bicicleta bicicleta) {
         if (bicicleta != null) {
