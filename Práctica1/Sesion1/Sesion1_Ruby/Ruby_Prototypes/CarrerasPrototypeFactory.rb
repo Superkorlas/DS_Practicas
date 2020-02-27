@@ -12,30 +12,7 @@ module Ruby_Prototypes
 			@_prototypeBicicletaCarretera = BicicletaCarretera.createBici
 			@_prototypeCarreraMontana = CarreraMontana.createCarrera
 			@_prototypeCarreraCarretera = CarreraCarretera.createCarrera
-      @contadorBicicletaMontana = 0
-      @contadorBicicletaCarretera = 0
 		end
-		public
-		def crearBicicletaCarretera()
-      bici = @_prototypeBicicletaCarretera.clone
-      @contadorBicicletaCarretera = @contadorBicicletaCarretera + 1
-      bici.setId(@contadorBicicletaCarretera)
-      bici
-		end
-
-		def crearBicicletaMontana()
-      bici = @_prototypeBicicletaMontana.clone
-      @contadorBicicletaMontana = @contadorBicicletaMontana + 1
-      bici.setId(@contadorBicicletaMontana)
-      bici
-		end
-
-		def crearCarreraCarretera()
-      @_prototypeCarreraCarretera.clone
-		end
-
-		def crearCarreraMontana()
-      	@_prototypeCarreraMontana.clone
-		end
+    attr_reader :_prototypeBicicletaMontana, :_prototypeBicicletaCarretera, :_prototypeCarreraMontana, :_prototypeCarreraCarretera
 	end
 end

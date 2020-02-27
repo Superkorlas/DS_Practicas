@@ -2,18 +2,23 @@ module Ruby_Prototypes
 	public
 	class Carrera
 		private_class_method :new
-		def initialize()
+		def initialize
       @bicicletas = Array.new
 		end
     public
     def self.createCarrera
       new
     end
-    def anadirBicicleta(bici)
-      @bicicletas << bici
-    end
-    def getBicicletas
-      @bicicletas
+    def inicializarCarrera(numero)
+      i = 0
+      while i < numero
+        bici = @biciPrototype.clone
+        bici.setId(i+1)
+        @bicicletas << bici
+        i = i + 1
+      end
+      puts "#{self.to_s} creada"
+      self.iniciarCarrera(@abandono)
     end
     def iniciarCarrera(abandono)
       total_carrera = 60
