@@ -10,6 +10,7 @@ module Ruby_Prototypes
       @biciPrototype = BicicletaMontana.createBici
       @abandono = 0.2
     end
+    
     def to_s
       "Carrera de montana con #{@bicicletas.size} bicicletas"
     end

@@ -5,10 +5,12 @@ module Ruby_Prototypes
 		def initialize
       @bicicletas = Array.new
 		end
+    
     public
     def self.createCarrera
       new
     end
+    
     def inicializarCarrera(numero)
       i = 0
       while i < numero
@@ -20,6 +22,7 @@ module Ruby_Prototypes
       puts "#{self.to_s} creada"
       self.iniciarCarrera(@abandono)
     end
+    
     def iniciarCarrera(abandono)
       total_carrera = 60
       abandonan = @bicicletas.size * abandono
