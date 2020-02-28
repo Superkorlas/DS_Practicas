@@ -1,39 +1,14 @@
 require "./CarrerasPrototypeFactory"
 
 module Ruby_Prototypes
+  
   factory = CarrerasPrototypeFactory.new
   
-  carreraMontana = factory.crearCarreraMontana
-  puts "#{carreraMontana.to_s} creada"
-  
-  puts "Introduzca numero de bicis de montana:"
+  puts "Elija tipo de carrera: montana (1), carretera (2)"
+  tipo = gets.to_i
+  puts "Introduzca numero de bicis para la carrera:"
   numero = gets.to_i
-  i = 0
-  while i < numero
-    bici = factory.crearBicicletaMontana
-    carreraMontana.anadirBicicleta(bici)
-    i = i + 1
-  end
-  dorsales = Array.new
-  carreraMontana.getBicicletas.each { |i| dorsales << i.getId  }
-  puts "#{carreraMontana.to_s}, ids de las bicicletas: #{dorsales}"
+  carrera = tipo == 1 ? factory._prototypeCarreraMontana.clone : factory._prototypeCarreraCarretera.clone
+  carrera.inicializarCarrera(numero)
 
-  carreraCarretera = factory.crearCarreraCarretera
-  puts "#{carreraCarretera.to_s} creada"
-  
-  puts "Introduzca numero de bicis de carretera:"
-  numero = gets.to_i
-  i = 0
-  while i < numero
-    bici = factory.crearBicicletaCarretera
-    carreraCarretera.anadirBicicleta(bici)
-    i = i + 1
-  end
-  dorsales = Array.new
-  carreraCarretera.getBicicletas.each { |i| dorsales << i.getId  }
-  puts "#{carreraCarretera.to_s}, ids de las bicicletas: #{dorsales}"
-  
-  carreraMontana.iniciarCarrera(0.2)
-  carreraCarretera.iniciarCarrera(0.1)
-  
 end
