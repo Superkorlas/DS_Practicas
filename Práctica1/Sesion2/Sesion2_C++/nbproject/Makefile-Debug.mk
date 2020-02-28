@@ -35,6 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Bus.o \
+	${OBJECTDIR}/ComponenteEquipo.o \
+	${OBJECTDIR}/Disco.o \
+	${OBJECTDIR}/Tarjeta.o \
+	${OBJECTDIR}/VisitanteEquipo.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,6 +66,31 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sesion2_c__.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sesion2_c__ ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Bus.o: Bus.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bus.o Bus.cpp
+
+${OBJECTDIR}/ComponenteEquipo.o: ComponenteEquipo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComponenteEquipo.o ComponenteEquipo.cpp
+
+${OBJECTDIR}/Disco.o: Disco.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Disco.o Disco.cpp
+
+${OBJECTDIR}/Tarjeta.o: Tarjeta.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tarjeta.o Tarjeta.cpp
+
+${OBJECTDIR}/VisitanteEquipo.o: VisitanteEquipo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitanteEquipo.o VisitanteEquipo.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
