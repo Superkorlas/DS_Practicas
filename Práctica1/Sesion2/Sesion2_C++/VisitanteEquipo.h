@@ -14,10 +14,6 @@
 #ifndef VISITANTEEQUIPO_H
 #define VISITANTEEQUIPO_H
 
-#include "VisitanteEquipo.h"
-#include "ComponenteEquipo.h"
-#include <list>
-
 class Bus;
 class Tarjeta;
 class Disco;
@@ -34,8 +30,6 @@ public:
     
     virtual void ImprimirResultado();
 protected:
-    //std::list<ComponenteEquipo> equipo;
-
 };
 
 #endif /* VISITANTEEQUIPO_H */

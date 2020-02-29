@@ -12,6 +12,7 @@
  */
 
 #include "Disco.h"
+#include "VisitanteEquipo.h"
 
 Disco::Disco() {
 }

@@ -12,6 +12,7 @@
  */
 
 #include "Bus.h"
+#include "VisitanteEquipo.h"
 #include <string>
 
 Bus::Bus() {

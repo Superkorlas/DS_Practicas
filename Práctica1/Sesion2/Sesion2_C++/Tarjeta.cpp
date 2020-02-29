@@ -12,6 +12,7 @@
  */
 
 #include "Tarjeta.h"
+#include "VisitanteEquipo.h"
 
 Tarjeta::Tarjeta() {
 }

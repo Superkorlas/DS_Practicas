@@ -14,10 +14,11 @@
 #ifndef COMPONENTEEQUIPO_H
 #define COMPONENTEEQUIPO_H
 
-#include "VisitanteEquipo.h"
 #include <string>
 
 using namespace std;
+
+class VisitanteEquipo;
 
 class ComponenteEquipo {
 public:
@@ -25,7 +26,7 @@ public:
     ComponenteEquipo(const ComponenteEquipo& orig);
     virtual ~ComponenteEquipo();
     
-    virtual void aceptarVisitante(VisitanteEquipo v);
+    virtual void aceptarVisitante(VisitanteEquipo v) = 0;
     
      inline string getName() {return name;}
      inline float getPrecio() {return precio;}
