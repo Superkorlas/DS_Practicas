@@ -15,6 +15,8 @@
 #define VISITANTEEQUIPO_H
 
 #include "VisitanteEquipo.h"
+#include "ComponenteEquipo.h"
+#include <list>
 
 class Bus;
 class Tarjeta;
@@ -29,7 +31,10 @@ public:
     virtual void visitarDisco(Disco d);
     virtual void visitarTarjeta(Tarjeta t);
     virtual void visitarBus(Bus b);
-private:
+    
+    virtual void ImprimirResultado();
+protected:
+    //std::list<ComponenteEquipo> equipo;
 
 };
 

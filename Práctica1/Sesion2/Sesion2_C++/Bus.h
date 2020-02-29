@@ -15,11 +15,13 @@
 #define BUS_H
 
 #include "ComponenteEquipo.h"
+#include <string>
 
 class Bus : public ComponenteEquipo{
 public:
     Bus();
     Bus(const Bus& orig);
+    Bus(string name, float precio);
     virtual ~Bus();
     
     void aceptarVisitante(VisitanteEquipo v) override;

@@ -19,6 +19,11 @@ Tarjeta::Tarjeta() {
 Tarjeta::Tarjeta(const Tarjeta& orig) {
 }
 
+Tarjeta::Tarjeta(string name, float precio) {
+    this->name = name;
+    this->precio = precio;
+}
+
 Tarjeta::~Tarjeta() {
 }
 

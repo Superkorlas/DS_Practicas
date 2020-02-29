@@ -11,6 +11,8 @@
  * Created on 28 de febrero de 2020, 18:01
  */
 
+using namespace std;
+
 #include "ComponenteEquipo.h"
 
 ComponenteEquipo::ComponenteEquipo() {

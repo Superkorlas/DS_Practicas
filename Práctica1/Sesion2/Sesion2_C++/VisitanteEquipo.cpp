@@ -16,6 +16,8 @@
 #include "Disco.h"
 #include "Tarjeta.h"
 
+#include <iostream>
+
 VisitanteEquipo::VisitanteEquipo() {
 }
 
@@ -34,6 +36,10 @@ void VisitanteEquipo::visitarTarjeta(Tarjeta t){
 }
 
 void VisitanteEquipo::visitarDisco(Disco d){
+    std::cout << "jeje" << std::endl;
+}
+
+void VisitanteEquipo::ImprimirResultado() {
     
 }
 

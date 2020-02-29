@@ -9,6 +9,8 @@
       <itemPath>Disco.h</itemPath>
       <itemPath>Tarjeta.h</itemPath>
       <itemPath>VisitanteEquipo.h</itemPath>
+      <itemPath>VisitantePrecio.h</itemPath>
+      <itemPath>VisitantePrecioDetalle.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -22,6 +24,8 @@
       <itemPath>Disco.cpp</itemPath>
       <itemPath>Tarjeta.cpp</itemPath>
       <itemPath>VisitanteEquipo.cpp</itemPath>
+      <itemPath>VisitantePrecio.cpp</itemPath>
+      <itemPath>VisitantePrecioDetalle.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -66,6 +70,14 @@
       </item>
       <item path="VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="VisitantePrecio.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VisitantePrecio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VisitantePrecioDetalle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VisitantePrecioDetalle.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -108,6 +120,14 @@
       <item path="VisitanteEquipo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="VisitanteEquipo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VisitantePrecio.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VisitantePrecio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VisitantePrecioDetalle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VisitantePrecioDetalle.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

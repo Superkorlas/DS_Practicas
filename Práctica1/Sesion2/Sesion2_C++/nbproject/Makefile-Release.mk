@@ -40,6 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Disco.o \
 	${OBJECTDIR}/Tarjeta.o \
 	${OBJECTDIR}/VisitanteEquipo.o \
+	${OBJECTDIR}/VisitantePrecio.o \
+	${OBJECTDIR}/VisitantePrecioDetalle.o \
 	${OBJECTDIR}/main.o
 
 
@@ -91,6 +93,16 @@ ${OBJECTDIR}/VisitanteEquipo.o: VisitanteEquipo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitanteEquipo.o VisitanteEquipo.cpp
+
+${OBJECTDIR}/VisitantePrecio.o: VisitantePrecio.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitantePrecio.o VisitantePrecio.cpp
+
+${OBJECTDIR}/VisitantePrecioDetalle.o: VisitantePrecioDetalle.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VisitantePrecioDetalle.o VisitantePrecioDetalle.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

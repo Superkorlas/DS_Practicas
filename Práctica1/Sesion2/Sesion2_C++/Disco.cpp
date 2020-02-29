@@ -19,6 +19,11 @@ Disco::Disco() {
 Disco::Disco(const Disco& orig) {
 }
 
+Disco::Disco(string name, float precio) {
+    this->name = name;
+    this->precio = precio;
+}
+
 Disco::~Disco() {
 }
 

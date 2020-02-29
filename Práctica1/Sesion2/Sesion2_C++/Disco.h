@@ -15,11 +15,13 @@
 #define DISCO_H
 
 #include "ComponenteEquipo.h"
+#include <string>
 
 class Disco : public ComponenteEquipo{
 public:
     Disco();
     Disco(const Disco& orig);
+    Disco(string name, float precio);
     virtual ~Disco();
     
     void aceptarVisitante(VisitanteEquipo v) override;

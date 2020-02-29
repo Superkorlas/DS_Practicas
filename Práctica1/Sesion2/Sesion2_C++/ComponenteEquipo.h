@@ -15,6 +15,9 @@
 #define COMPONENTEEQUIPO_H
 
 #include "VisitanteEquipo.h"
+#include <string>
+
+using namespace std;
 
 class ComponenteEquipo {
 public:
@@ -22,9 +25,17 @@ public:
     ComponenteEquipo(const ComponenteEquipo& orig);
     virtual ~ComponenteEquipo();
     
-    virtual void aceptarVisitante(VisitanteEquipo v) = 0 ;
-private:
-
+    virtual void aceptarVisitante(VisitanteEquipo v);
+    
+     inline string getName() {return name;}
+     inline float getPrecio() {return precio;}
+     
+     inline void setName(string name) {this->name = name;}
+     inline void setPrecio(float precio) {this->precio = precio;}
+     
+protected:
+    string name;
+    float precio;
 };
 
 #endif /* COMPONENTEEQUIPO_H */

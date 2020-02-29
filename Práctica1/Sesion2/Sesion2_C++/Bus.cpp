@@ -12,6 +12,7 @@
  */
 
 #include "Bus.h"
+#include <string>
 
 Bus::Bus() {
 }
@@ -20,6 +21,11 @@ Bus::Bus(const Bus& orig) {
 }
 
 Bus::~Bus() {
+}
+
+Bus::Bus(string name, float precio) {
+    this->name = name;
+    this->precio = precio;
 }
 
 void Bus::aceptarVisitante(VisitanteEquipo v) {

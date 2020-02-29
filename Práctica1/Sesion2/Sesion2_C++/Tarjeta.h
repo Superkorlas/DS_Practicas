@@ -15,11 +15,13 @@
 #define TARJETA_H
 
 #include "ComponenteEquipo.h"
+#include <string>
 
 class Tarjeta : public ComponenteEquipo{
 public:
     Tarjeta();
     Tarjeta(const Tarjeta& orig);
+    Tarjeta(string name, float precio);
     virtual ~Tarjeta();
     
     void aceptarVisitante(VisitanteEquipo v) override;
