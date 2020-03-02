@@ -20,7 +20,8 @@ class VisitantePrecio : public VisitanteEquipo{
 public:
     VisitantePrecio();
     VisitantePrecio(const VisitantePrecio& orig);
-    
+    VisitantePrecio(Categoria tipoCliente);
+
     virtual void visitarDisco(Disco &d);
     virtual void visitarTarjeta(Tarjeta &t);
     virtual void visitarBus(Bus &b);

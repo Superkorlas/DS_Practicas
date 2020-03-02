@@ -26,20 +26,23 @@ VisitantePrecio::VisitantePrecio() {
 VisitantePrecio::VisitantePrecio(const VisitantePrecio& orig) {
 }
 
+VisitantePrecio::VisitantePrecio(Categoria tipoCliente) {
+    this->tipoCliente = tipoCliente;
+}
+
 void VisitantePrecio::visitarBus(Bus &b){
-    this->precioAcumulado += b.getPrecio();
+    this->precioAcumulado += this->aplicaDescuento(b.getPrecio());
 }
 
 void VisitantePrecio::visitarTarjeta(Tarjeta &t){
-    this->precioAcumulado += t.getPrecio();
+    this->precioAcumulado += this->aplicaDescuento(t.getPrecio());
 }
 
 void VisitantePrecio::visitarDisco(Disco &d){
-    this->precioAcumulado += d.getPrecio();
+    this->precioAcumulado += this->aplicaDescuento(d.getPrecio());
 }
 
-void VisitantePrecio::ImprimirResultado() {
-    
+void VisitantePrecio::ImprimirResultado() {   
     /*  Si usara los métodos visitarBus, visitarDisco y visitarTarjeta de clase padre
     list<ComponenteEquipo*>::iterator it;
     

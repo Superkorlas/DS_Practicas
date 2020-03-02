@@ -20,6 +20,7 @@ class VisitantePrecioDetalle : public VisitanteEquipo {
 public:
     VisitantePrecioDetalle();
     VisitantePrecioDetalle(const VisitantePrecioDetalle& orig);
+    VisitantePrecioDetalle(Categoria tipoCliente);
     
     void ImprimirResultado();
 private:

@@ -24,6 +24,10 @@ VisitanteEquipo::VisitanteEquipo() {
 VisitanteEquipo::VisitanteEquipo(const VisitanteEquipo& orig) {
 }
 
+VisitanteEquipo::VisitanteEquipo(Categoria tipoCliente) {
+    this->tipoCliente = tipoCliente;
+}
+
 VisitanteEquipo::~VisitanteEquipo() {
 }
 
@@ -37,5 +41,10 @@ void VisitanteEquipo::visitarTarjeta(Tarjeta &t){
 
 void VisitanteEquipo::visitarDisco(Disco &d){
     equipo.push_back(&d);
+}
+
+float VisitanteEquipo::aplicaDescuento (float precioInicial) {
+    float precioFinal = precioInicial - (precioInicial * this->tipoCliente / 100.0f); 
+    return precioFinal;
 }
 
