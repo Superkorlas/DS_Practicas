@@ -12,6 +12,8 @@
  */
 
 #include "VisitantePrecioDetalle.h"
+#include <list>
+#include <iterator>
 
 VisitantePrecioDetalle::VisitantePrecioDetalle() {
 }
@@ -19,6 +21,13 @@ VisitantePrecioDetalle::VisitantePrecioDetalle() {
 VisitantePrecioDetalle::VisitantePrecioDetalle(const VisitantePrecioDetalle& orig) {
 }
 
-VisitantePrecioDetalle::~VisitantePrecioDetalle() {
+void VisitantePrecioDetalle::ImprimirResultado() {
+    list<ComponenteEquipo*>::iterator it;
+    string resultado = "";
+    
+    for (it = equipo.begin(); it != equipo.end(); it++) {
+        this->precioAcumulado += (*it)->getPrecio();
+    }
+    
+    
 }
-

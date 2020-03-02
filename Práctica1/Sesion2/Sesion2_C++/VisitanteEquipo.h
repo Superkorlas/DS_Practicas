@@ -14,6 +14,11 @@
 #ifndef VISITANTEEQUIPO_H
 #define VISITANTEEQUIPO_H
 
+#include <list>
+#include "ComponenteEquipo.h"
+
+using namespace std;
+
 class Bus;
 class Tarjeta;
 class Disco;
@@ -24,12 +29,13 @@ public:
     VisitanteEquipo(const VisitanteEquipo& orig);
     virtual ~VisitanteEquipo();
     
-    virtual void visitarDisco(Disco d);
-    virtual void visitarTarjeta(Tarjeta t);
-    virtual void visitarBus(Bus b);
+    virtual void visitarDisco(Disco &d);
+    virtual void visitarTarjeta(Tarjeta &t);
+    virtual void visitarBus(Bus &b);
     
-    virtual void ImprimirResultado();
+    virtual void ImprimirResultado() = 0;
 protected:
+    list<ComponenteEquipo*> equipo;
 };
 
 #endif /* VISITANTEEQUIPO_H */

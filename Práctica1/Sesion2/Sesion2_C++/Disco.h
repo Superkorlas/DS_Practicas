@@ -24,7 +24,7 @@ public:
     Disco(string name, float precio);
     virtual ~Disco();
     
-    void aceptarVisitante(VisitanteEquipo v) override;
+    void aceptarVisitante(VisitanteEquipo &v) override;
 private:
 
 };

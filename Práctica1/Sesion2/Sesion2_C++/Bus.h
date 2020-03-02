@@ -24,7 +24,7 @@ public:
     Bus(string name, float precio);
     virtual ~Bus();
     
-    void aceptarVisitante(VisitanteEquipo v) override;
+    void aceptarVisitante(VisitanteEquipo &v) override;
 private:
 
 };

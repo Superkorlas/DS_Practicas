@@ -14,12 +14,12 @@
 using namespace std;
 
 #include "ComponenteEquipo.h"
-
+/*
 ComponenteEquipo::ComponenteEquipo() {
 }
 
 ComponenteEquipo::ComponenteEquipo(const ComponenteEquipo& orig) {
-}
+}*/
 
 ComponenteEquipo::~ComponenteEquipo() {
 }

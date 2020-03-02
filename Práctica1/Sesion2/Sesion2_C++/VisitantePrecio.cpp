@@ -17,6 +17,8 @@
 #include "Disco.h"
 #include "Tarjeta.h"
 #include <iostream>
+#include <list>
+#include <iterator>
 
 VisitantePrecio::VisitantePrecio() {
 }
@@ -24,23 +26,27 @@ VisitantePrecio::VisitantePrecio() {
 VisitantePrecio::VisitantePrecio(const VisitantePrecio& orig) {
 }
 
-VisitantePrecio::~VisitantePrecio() {
-}
-
-void VisitantePrecio::visitarBus(Bus b){
+void VisitantePrecio::visitarBus(Bus &b){
     this->precioAcumulado += b.getPrecio();
 }
 
-void VisitantePrecio::visitarTarjeta(Tarjeta t){
-     this->precioAcumulado += t.getPrecio();
+void VisitantePrecio::visitarTarjeta(Tarjeta &t){
+    this->precioAcumulado += t.getPrecio();
 }
 
-void VisitantePrecio::visitarDisco(Disco d) {
-     this->precioAcumulado += d.getPrecio();
-     std::cout << d.getPrecio() << std::endl;
+void VisitantePrecio::visitarDisco(Disco &d){
+    this->precioAcumulado += d.getPrecio();
 }
 
 void VisitantePrecio::ImprimirResultado() {
+    
+    /*  Si usara los métodos visitarBus, visitarDisco y visitarTarjeta de clase padre
+    list<ComponenteEquipo*>::iterator it;
+    
+    for (it = equipo.begin(); it != equipo.end(); it++) {
+        this->precioAcumulado += (*it)->getPrecio();
+    }
+    */
     std::cout << "Precio del equipo: "  << this->precioAcumulado;
 }
 

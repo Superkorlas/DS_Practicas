@@ -27,19 +27,15 @@ VisitanteEquipo::VisitanteEquipo(const VisitanteEquipo& orig) {
 VisitanteEquipo::~VisitanteEquipo() {
 }
 
-void VisitanteEquipo::visitarBus(Bus b){
-    
+void VisitanteEquipo::visitarBus(Bus &b){
+    equipo.push_back(&b);
 }
 
-void VisitanteEquipo::visitarTarjeta(Tarjeta t){
-    
+void VisitanteEquipo::visitarTarjeta(Tarjeta &t){
+    equipo.push_back(&t);
 }
 
-void VisitanteEquipo::visitarDisco(Disco d){
-    std::cout << "jeje" << std::endl;
-}
-
-void VisitanteEquipo::ImprimirResultado() {
-    
+void VisitanteEquipo::visitarDisco(Disco &d){
+    equipo.push_back(&d);
 }
 

@@ -13,6 +13,7 @@
 
 #include "Disco.h"
 #include "VisitanteEquipo.h"
+#include <iostream>
 
 Disco::Disco() {
 }
@@ -28,6 +29,6 @@ Disco::Disco(string name, float precio) {
 Disco::~Disco() {
 }
 
-void Disco::aceptarVisitante(VisitanteEquipo v) {
+void Disco::aceptarVisitante(VisitanteEquipo &v) {
     v.visitarDisco(*this);
 }

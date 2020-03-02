@@ -22,21 +22,21 @@ class VisitanteEquipo;
 
 class ComponenteEquipo {
 public:
-    ComponenteEquipo();
-    ComponenteEquipo(const ComponenteEquipo& orig);
+    //ComponenteEquipo();
+    //ComponenteEquipo(const ComponenteEquipo& orig);
     virtual ~ComponenteEquipo();
     
-    virtual void aceptarVisitante(VisitanteEquipo v) = 0;
+    virtual void aceptarVisitante(VisitanteEquipo &v) = 0;
     
-     inline string getName() {return name;}
-     inline float getPrecio() {return precio;}
+     inline string getName() {return this->name;}
+     inline float getPrecio() {return this->precio;}
      
      inline void setName(string name) {this->name = name;}
      inline void setPrecio(float precio) {this->precio = precio;}
      
 protected:
-    string name;
-    float precio;
+    string name = "";
+    float precio = 0.0f;
 };
 
 #endif /* COMPONENTEEQUIPO_H */

@@ -24,7 +24,7 @@ public:
     Tarjeta(string name, float precio);
     virtual ~Tarjeta();
     
-    void aceptarVisitante(VisitanteEquipo v) override;
+    void aceptarVisitante(VisitanteEquipo &v) override;
 private:
 
 };

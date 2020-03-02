@@ -20,11 +20,10 @@ class VisitantePrecio : public VisitanteEquipo{
 public:
     VisitantePrecio();
     VisitantePrecio(const VisitantePrecio& orig);
-    virtual ~VisitantePrecio();
-   
-     void visitarDisco(Disco d) override;
-     void visitarTarjeta(Tarjeta t) override;
-     void visitarBus(Bus b) override;
+    
+    virtual void visitarDisco(Disco &d);
+    virtual void visitarTarjeta(Tarjeta &t);
+    virtual void visitarBus(Bus &b);
     
      void ImprimirResultado() override;
 protected:

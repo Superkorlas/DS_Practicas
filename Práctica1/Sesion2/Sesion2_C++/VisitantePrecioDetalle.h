@@ -20,9 +20,10 @@ class VisitantePrecioDetalle : public VisitanteEquipo {
 public:
     VisitantePrecioDetalle();
     VisitantePrecioDetalle(const VisitantePrecioDetalle& orig);
-    virtual ~VisitantePrecioDetalle();
+    
+    void ImprimirResultado();
 private:
-
+    float precioAcumulado = 0;
 };
 
 #endif /* VISITANTEPRECIODETALLE_H */

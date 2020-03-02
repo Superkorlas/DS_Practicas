@@ -29,7 +29,7 @@ Bus::Bus(string name, float precio) {
     this->precio = precio;
 }
 
-void Bus::aceptarVisitante(VisitanteEquipo v) {
+void Bus::aceptarVisitante(VisitanteEquipo &v) {
     v.visitarBus(*this);
 }
 

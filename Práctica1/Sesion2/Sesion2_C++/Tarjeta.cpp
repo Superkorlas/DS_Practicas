@@ -28,6 +28,6 @@ Tarjeta::Tarjeta(string name, float precio) {
 Tarjeta::~Tarjeta() {
 }
 
-void Tarjeta::aceptarVisitante(VisitanteEquipo v) {
+void Tarjeta::aceptarVisitante(VisitanteEquipo &v) {
     v.visitarTarjeta(*this);
 }
