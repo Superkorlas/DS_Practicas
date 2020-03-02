@@ -47,6 +47,6 @@ void VisitantePrecio::ImprimirResultado() {
         this->precioAcumulado += (*it)->getPrecio();
     }
     */
-    std::cout << "Precio del equipo: "  << this->precioAcumulado;
+    std::cout << "Precio del equipo: "  << this->precioAcumulado << std::endl;
 }
 

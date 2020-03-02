@@ -19,15 +19,9 @@
 #include "Disco.h"
 #include "Tarjeta.h"
 #include "VisitantePrecio.h"
+#include "VisitantePrecioDetalle.h"
 
 using namespace std;
-/*
-struct equipo {
-        Bus bus ; 
-        Disco disco;
-        Tarjeta tarjeta;
-    };
-    */
 
 /*
  * 
@@ -37,12 +31,17 @@ int main(int argc, char** argv) {
     ComponenteEquipo* disco = new Disco("disco1", 150);
     ComponenteEquipo* tarjeta = new Tarjeta ("tarjeta1", 500);
     
-    VisitanteEquipo* visitante = new VisitantePrecio();
-    bus->aceptarVisitante(*visitante);
-    disco->aceptarVisitante(*visitante);
-    tarjeta->aceptarVisitante(*visitante);
+    VisitanteEquipo* visitantePrecio = new VisitantePrecio();
+    bus->aceptarVisitante(*visitantePrecio);
+    disco->aceptarVisitante(*visitantePrecio);
+    tarjeta->aceptarVisitante(*visitantePrecio);
+    visitantePrecio->ImprimirResultado();
     
-    visitante->ImprimirResultado();
+    VisitanteEquipo* visitantePrecioDetallado = new VisitantePrecioDetalle();
+    bus->aceptarVisitante(*visitantePrecioDetallado);
+    disco->aceptarVisitante(*visitantePrecioDetallado);
+    tarjeta->aceptarVisitante(*visitantePrecioDetallado);
+    visitantePrecioDetallado->ImprimirResultado();
     
     return 0;
 }

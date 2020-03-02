@@ -14,6 +14,7 @@
 #include "VisitantePrecioDetalle.h"
 #include <list>
 #include <iterator>
+#include <iostream>
 
 VisitantePrecioDetalle::VisitantePrecioDetalle() {
 }
@@ -23,11 +24,12 @@ VisitantePrecioDetalle::VisitantePrecioDetalle(const VisitantePrecioDetalle& ori
 
 void VisitantePrecioDetalle::ImprimirResultado() {
     list<ComponenteEquipo*>::iterator it;
-    string resultado = "";
+    std::cout << "Precio detallado del equipo:";
     
     for (it = equipo.begin(); it != equipo.end(); it++) {
+        std::cout << "\nComponente: " << (*it)->getName() << "\tPrecio: " << (*it)->getPrecio();
         this->precioAcumulado += (*it)->getPrecio();
     }
     
-    
+    std::cout << "\nPrecio total del equipo: " << this->precioAcumulado << std::endl;
 }
