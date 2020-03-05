@@ -7,6 +7,7 @@
       <itemPath>Bus.h</itemPath>
       <itemPath>ComponenteEquipo.h</itemPath>
       <itemPath>Disco.h</itemPath>
+      <itemPath>Equipo.h</itemPath>
       <itemPath>Tarjeta.h</itemPath>
       <itemPath>VisitanteEquipo.h</itemPath>
       <itemPath>VisitantePrecio.h</itemPath>
@@ -22,6 +23,7 @@
       <itemPath>Bus.cpp</itemPath>
       <itemPath>ComponenteEquipo.cpp</itemPath>
       <itemPath>Disco.cpp</itemPath>
+      <itemPath>Equipo.cpp</itemPath>
       <itemPath>Tarjeta.cpp</itemPath>
       <itemPath>VisitanteEquipo.cpp</itemPath>
       <itemPath>VisitantePrecio.cpp</itemPath>
@@ -61,6 +63,10 @@
       <item path="Disco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Disco.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Equipo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Equipo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Tarjeta.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -112,6 +118,10 @@
       <item path="Disco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Disco.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Equipo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Equipo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Tarjeta.cpp" ex="false" tool="1" flavor2="0">
       </item>

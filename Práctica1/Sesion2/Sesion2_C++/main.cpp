@@ -13,13 +13,10 @@
 
 #include "cstdlib"
 #include <iostream>
-#include "ComponenteEquipo.h"
 #include "VisitanteEquipo.h"
-#include "Bus.h"
-#include "Disco.h"
-#include "Tarjeta.h"
 #include "VisitantePrecio.h"
 #include "VisitantePrecioDetalle.h"
+#include "Equipo.h"
 
 using namespace std;
 
@@ -27,26 +24,18 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    ComponenteEquipo* bus = new Bus("bus1", 25);
-    ComponenteEquipo* disco = new Disco("disco1", 150);
-    ComponenteEquipo* tarjeta = new Tarjeta ("tarjeta1", 500);
+    Equipo* equipo = new Equipo(25, 150, 250);
     
     VisitanteEquipo* visitantePrecio = new VisitantePrecio(SIN_DESCUENTO);
-    bus->aceptarVisitante(*visitantePrecio);
-    disco->aceptarVisitante(*visitantePrecio);
-    tarjeta->aceptarVisitante(*visitantePrecio);
+    equipo->aceptarVisitante(*visitantePrecio);
     visitantePrecio->ImprimirResultado();
     
     VisitanteEquipo* visitantePrecioDetallado = new VisitantePrecioDetalle(ESTUDIANTE);
-    bus->aceptarVisitante(*visitantePrecioDetallado);
-    disco->aceptarVisitante(*visitantePrecioDetallado);
-    tarjeta->aceptarVisitante(*visitantePrecioDetallado);
+    equipo->aceptarVisitante(*visitantePrecioDetallado);
     visitantePrecioDetallado->ImprimirResultado();
     
     VisitanteEquipo* visitantePrecioDetallado2 = new VisitantePrecioDetalle(MAYORISTA);
-    bus->aceptarVisitante(*visitantePrecioDetallado2);
-    disco->aceptarVisitante(*visitantePrecioDetallado2);
-    tarjeta->aceptarVisitante(*visitantePrecioDetallado2);
+    equipo->aceptarVisitante(*visitantePrecioDetallado2);
     visitantePrecioDetallado2->ImprimirResultado();
     
     return 0;

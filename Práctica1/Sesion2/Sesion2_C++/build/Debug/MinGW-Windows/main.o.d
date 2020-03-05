@@ -1,17 +1,12 @@
-build/Debug/MinGW-Windows/main.o: main.cpp ComponenteEquipo.h \
- VisitanteEquipo.h Bus.h Disco.h Tarjeta.h VisitantePrecio.h \
- VisitantePrecioDetalle.h
-
-ComponenteEquipo.h:
+build/Debug/MinGW-Windows/main.o: main.cpp VisitanteEquipo.h \
+ ComponenteEquipo.h VisitantePrecio.h VisitantePrecioDetalle.h Equipo.h
 
 VisitanteEquipo.h:
 
-Bus.h:
-
-Disco.h:
-
-Tarjeta.h:
+ComponenteEquipo.h:
 
 VisitantePrecio.h:
 
 VisitantePrecioDetalle.h:
+
+Equipo.h:

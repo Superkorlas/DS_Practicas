@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Bus.o \
 	${OBJECTDIR}/ComponenteEquipo.o \
 	${OBJECTDIR}/Disco.o \
+	${OBJECTDIR}/Equipo.o \
 	${OBJECTDIR}/Tarjeta.o \
 	${OBJECTDIR}/VisitanteEquipo.o \
 	${OBJECTDIR}/VisitantePrecio.o \
@@ -83,6 +84,11 @@ ${OBJECTDIR}/Disco.o: Disco.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Disco.o Disco.cpp
+
+${OBJECTDIR}/Equipo.o: Equipo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Equipo.o Equipo.cpp
 
 ${OBJECTDIR}/Tarjeta.o: Tarjeta.cpp
 	${MKDIR} -p ${OBJECTDIR}
