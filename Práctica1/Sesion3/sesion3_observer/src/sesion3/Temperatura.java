@@ -6,7 +6,6 @@
 package sesion3;
 
 import java.util.Observable;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,9 +16,13 @@ import java.util.logging.Logger;
 public class Temperatura extends Observable implements Runnable {
 
     private double state;
+    private double minimo;
+    private double maximo;
 
     Temperatura() {
         state = 0.0f;
+        minimo = -10;
+        maximo = 40;
         this.run();
     }
 
@@ -28,9 +31,9 @@ public class Temperatura extends Observable implements Runnable {
     }
 
     public void setState() {      
-        this.state = Math.random() * 50 - 10;
+        this.state = Math.random() * maximo - minimo;
         this.notifyObservers(this.state);
-        System.out.println("Temperatura: " + this.state);
+        System.out.println("Temperatura: " + this.state + "º");
     }
 
     @Override
