@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class Temperatura extends Observable implements Runnable {
 
-    private double state;
+    private static double state;
     private double minimo;
     private double maximo;
 
