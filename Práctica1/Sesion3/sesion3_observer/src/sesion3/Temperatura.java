@@ -5,6 +5,7 @@
  */
 package sesion3;
 
+import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,26 +16,37 @@ import java.util.logging.Logger;
  */
 public class Temperatura extends Observable implements Runnable {
 
-    private static double state;
-    private double minimo;
-    private double maximo;
+    private static float state;
+    private float minimo;
+    private float maximo;
 
     Temperatura() {
         state = 0.0f;
         minimo = -10;
         maximo = 40;
-        this.run();
+        //this.run();
     }
 
     public double getState() {
         return state;
     }
 
-    public void setState() {      
-        this.state = Math.random() * maximo - minimo;
+    public void setState() {
+        this.state = (float) Math.random() * (maximo - minimo + 1) + minimo;
+        this.setChanged();
         this.notifyObservers(this.state);
-        //System.out.println("Temperatura: " + this.state + "º");
+        System.out.println("Temperatura: " + this.state + "º");
     }
+
+    public float getMinimo() {
+        return minimo;
+    }
+
+    public float getMaximo() {
+        return maximo;
+    }
+    
+    
 
     @Override
     public void run() {

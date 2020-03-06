@@ -5,7 +5,6 @@
  */
 package sesion3;
 
-import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -13,15 +12,16 @@ import java.util.Observer;
  *
  * @author super
  */
-public class PantallaTemperatura extends javax.swing.JFrame implements Observer{
-
+public class BotonCambio extends javax.swing.JFrame implements Observer{
+    Temperatura temperatura;
     /**
-     * Creates new form PantallaTemperatura
+     * Creates new form BotonCambio
      */
-    public PantallaTemperatura(Observable observable) {
+    public BotonCambio(Temperatura temperatura) {
         initComponents();
         this.setVisible(true);
-        observable.addObserver(this);
+        this.temperatura = temperatura;
+        temperatura.addObserver(this);
     }
 
     /**
@@ -33,16 +33,17 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Observer{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        temperatura = new javax.swing.JLabel();
-        titulo = new javax.swing.JLabel();
+        botonCambio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        temperatura.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        temperatura.setText("jLabel1");
-
-        titulo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        titulo.setText("Temperatura:");
+        botonCambio.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        botonCambio.setText("CAMBIAR");
+        botonCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCambioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,34 +51,31 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Observer{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(temperatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                .addComponent(botonCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambioActionPerformed
+        this.temperatura.setState();
+    }//GEN-LAST:event_botonCambioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel temperatura;
-    private javax.swing.JLabel titulo;
+    private javax.swing.JButton botonCambio;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void update(Observable o, Object arg) {
-        DecimalFormat formato = new DecimalFormat("#.#");
-       this.temperatura.setText(formato.format(arg) + "º");
+        
     }
 }
