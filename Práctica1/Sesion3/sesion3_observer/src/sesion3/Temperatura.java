@@ -33,7 +33,7 @@ public class Temperatura extends Observable implements Runnable {
     public void setState() {      
         this.state = Math.random() * maximo - minimo;
         this.notifyObservers(this.state);
-        System.out.println("Temperatura: " + this.state + "º");
+        //System.out.println("Temperatura: " + this.state + "º");
     }
 
     @Override

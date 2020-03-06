@@ -11,15 +11,13 @@ package sesion3;
  */
 public class Main extends javax.swing.JFrame {
 
-    public static  Temperatura temperatura;
+    //public static  Temperatura temperatura;
     
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
-        if (temperatura != null)
-            ((PantallaTemperatura)pantallaTemperatura).addObservable(temperatura);
     }
 
     /**
@@ -62,7 +60,7 @@ public class Main extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       // temperatura = new Temperatura();
+        //Temperatura temperatura = new Temperatura();
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -90,10 +88,11 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //temperatura = new Temperatura();
                 new Main().setVisible(true);
             }
         });
+
+        //((PantallaTemperatura)pantallaTemperatura).addObserver(temperatura);
     
     }
 
