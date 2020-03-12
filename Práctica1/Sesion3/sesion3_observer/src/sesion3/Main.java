@@ -17,8 +17,8 @@ public class Main {
      */
     public static void main(String[] args) {
         Temperatura temperaturaObservable = new Temperatura();
-        TemperaturaAndalucia temperaturaObservableAnd = new TemperaturaAndalucia();
-        TemperaturaGalicia temperaturaObservableGal = new TemperaturaGalicia();
+        Temperatura temperaturaObservableAnd = new Temperatura();
+        Temperatura temperaturaObservableGal = new Temperatura();
         
         MapaMeteorologico mapa = new MapaMeteorologico(temperaturaObservable, temperaturaObservableAnd, temperaturaObservableGal);
         PantallaTemperatura pantalla = new PantallaTemperatura(temperaturaObservable);
