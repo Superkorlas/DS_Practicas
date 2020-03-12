@@ -7,15 +7,8 @@ package sesion4;
 
 /**
  *
- * @author jose
+ * @author super
  */
-public class main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        AudiR8 cochazo = new AudiR8();
-    }
-    
+public interface Filtro {
+    public double ejecutar(double revoluciones, EstadoMotor estadoMotor);
 }
