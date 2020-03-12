@@ -17,9 +17,22 @@ public class Main {
      */
     public static void main(String[] args) {
         Temperatura temperaturaObservable = new Temperatura();
+        TemperaturaAndalucia temperaturaObservableAnd = new TemperaturaAndalucia();
+        TemperaturaGalicia temperaturaObservableGal = new TemperaturaGalicia();
+        
+        MapaMeteorologico mapa = new MapaMeteorologico(temperaturaObservable, temperaturaObservableAnd, temperaturaObservableGal);
         PantallaTemperatura pantalla = new PantallaTemperatura(temperaturaObservable);
         BotonCambio boton = new BotonCambio(temperaturaObservable);
         GraficaTemperatura grafica  = new GraficaTemperatura(temperaturaObservable);
-        temperaturaObservable.run();
+     
+        System.out.println("Antes de run");
+        temperaturaObservable.start();
+        System.out.println("Entre run 1 y 2");
+        temperaturaObservableAnd.start();
+        System.out.println("Entre run 2 y 3");
+        temperaturaObservableGal.start();
+        System.out.println("Entre run 3 y 4");
+        pantalla.start();
+        System.out.println("Todas las thread running");
     }  
 }

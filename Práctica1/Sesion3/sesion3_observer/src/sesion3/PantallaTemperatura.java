@@ -7,21 +7,23 @@ package sesion3;
 
 import java.text.DecimalFormat;
 import java.util.Observable;
-import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author super
  */
-public class PantallaTemperatura extends javax.swing.JFrame implements Observer{
-
+public class PantallaTemperatura extends javax.swing.JFrame implements Runnable {
+    Temperatura observable;
+    Thread hilo;
     /**
      * Creates new form PantallaTemperatura
      */
     public PantallaTemperatura(Observable observable) {
+        this.observable = (Temperatura) observable;
         initComponents();
         this.setVisible(true);
-        observable.addObserver(this);
     }
 
     /**
@@ -74,10 +76,27 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Observer{
     private javax.swing.JLabel temperatura;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void update(Observable o, Object arg) {
-        DecimalFormat formato = new DecimalFormat("#.#");
-       this.temperatura.setText(formato.format(arg) + "º");
+    
+    public void start() {
+        if(hilo==null) {
+            hilo = new Thread(this);
+            hilo.start();
+        }
     }
+    
+    @Override
+    public void run() {
+        while (true) {
+            String temp = Double.toString(this.observable.getState());
+            //DecimalFormat formato = new DecimalFormat("#.#");
+            this.temperatura.setText(temp + "º");
+            System.out.println("Temperatura desde pantalla: " + temp + "º");
+            try {
+                long interval = (long) Math.random() * 4 +1;
+                Thread.sleep( interval * 5000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Temperatura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }    
 }

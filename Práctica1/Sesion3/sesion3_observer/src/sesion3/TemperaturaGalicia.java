@@ -14,18 +14,17 @@ import java.util.logging.Logger;
  *
  * @author super
  */
-public class Temperatura extends Observable implements Runnable {
-    
+public class TemperaturaGalicia extends Observable implements Runnable {
     Thread hilo;
 
     private static float state;
     private float minimo;
     private float maximo;
 
-    Temperatura() {
+    TemperaturaGalicia() {
         state = 0.0f;
-        minimo = -10;
-        maximo = 35;
+        minimo = 5;
+        maximo = 45;
         //this.run();
     }
 
@@ -47,14 +46,14 @@ public class Temperatura extends Observable implements Runnable {
     public float getMaximo() {
         return maximo;
     }
-    
+        
     public void start() {
         if(hilo==null) {
             hilo = new Thread(this);
             hilo.start();
         }
     }
-    
+
     @Override
     public void run() {
         while (true) {
@@ -63,7 +62,7 @@ public class Temperatura extends Observable implements Runnable {
                 long interval = (long) Math.random() * 4 +1;
                 Thread.sleep( interval * 5000);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Temperatura.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TemperaturaGalicia.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
