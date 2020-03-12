@@ -11,12 +11,12 @@ import java.util.Observable;
  *
  * @author jose
  */
-public class MapaMeteorologico extends javax.swing.JFrame{
+public class TiempoSatelital extends javax.swing.JFrame{
 
     /**
      * Creates new form ImageSetting
      */
-    public MapaMeteorologico(Observable madrid, Observable cadiz, Observable galicia) {
+    public TiempoSatelital(Observable madrid, Observable cadiz, Observable galicia) {
         System.out.println("MapaMeteorologico 1");
         initComponents();
         this.setVisible(true);
@@ -55,7 +55,7 @@ public class MapaMeteorologico extends javax.swing.JFrame{
         tempMadrid.setMaximumSize(new java.awt.Dimension(148, 44));
         tempMadrid.setMinimumSize(new java.awt.Dimension(148, 44));
         getContentPane().add(tempMadrid);
-        tempMadrid.setBounds(200, 160, 118, 43);
+        tempMadrid.setBounds(200, 160, 116, 47);
 
         tempCadiz.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         tempCadiz.setForeground(new java.awt.Color(245, 14, 14));
@@ -67,9 +67,9 @@ public class MapaMeteorologico extends javax.swing.JFrame{
         tempGalicia.setForeground(new java.awt.Color(253, 14, 14));
         tempGalicia.setText("jLabel2");
         getContentPane().add(tempGalicia);
-        tempGalicia.setBounds(30, 30, 118, 43);
+        tempGalicia.setBounds(30, 30, 116, 47);
 
-        mapa.setIcon(new javax.swing.ImageIcon("/home/jose/Documentos/DS_comun/DS_Practicas/Práctica1/Sesion3/sesion3_observer/mapa.jpg")); // NOI18N
+        mapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mapa.jpg"))); // NOI18N
         mapa.setText("jLabel1");
         getContentPane().add(mapa);
         mapa.setBounds(0, 0, 500, 370);
