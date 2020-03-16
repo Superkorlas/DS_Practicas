@@ -5,12 +5,15 @@
  */
 package sesion4;
 
+
 /**
  *
  * @author super
  */
-public class Salpicadero extends javax.swing.JFrame {
-
+public class Salpicadero extends javax.swing.JFrame
+{
+    //CuentaRevoluciones cuentaRevoluciones = new CuentaRevoluciones();
+    
     /**
      * Creates new form Salpicadero
      */
@@ -19,9 +22,11 @@ public class Salpicadero extends javax.swing.JFrame {
         this.setVisible(true);
     }
     
-    public double ejecutar(double revoluciones, EstadoMotor estadoMotor) {
-        return 0.0;
+    public void ejecutar(double revoluciones, EstadoMotor estadoMotor) {
+        this.revoluciones.setText(Double.toString(revoluciones));
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,17 +37,27 @@ public class Salpicadero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        revoluciones = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        revoluciones.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(revoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(219, Short.MAX_VALUE)
+                .addComponent(revoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -50,5 +65,7 @@ public class Salpicadero extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel revoluciones;
     // End of variables declaration//GEN-END:variables
+
 }

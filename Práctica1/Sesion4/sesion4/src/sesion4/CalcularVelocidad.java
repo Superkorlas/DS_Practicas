@@ -12,22 +12,28 @@ package sesion4;
  */
 public class CalcularVelocidad  implements Filtro {
     
-    double variacion = 100;
+    final double VARIACION = 100;
+    final double MAX_REVOLUCIONES = 5000;
+    final double MIN_REVOLUCIONES = 0;
     
     @Override
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor) {
         switch(estadoMotor) {
             case ACELERANDO:
-                revoluciones += this.variacion;
+                revoluciones += this.VARIACION;
                 break;
             case FRENANDO:
-                revoluciones -= this.variacion;
+                revoluciones -= this.VARIACION;
                 break;
             case APAGADO:
-                revoluciones = 0;
+                revoluciones = this.MIN_REVOLUCIONES;
                 break;
         }
-        
+        if (revoluciones > this.MAX_REVOLUCIONES) {
+            revoluciones = this.MAX_REVOLUCIONES;
+        } else if (revoluciones <= this.MIN_REVOLUCIONES) {
+            revoluciones = this.MIN_REVOLUCIONES;
+        }
         return revoluciones;
     }
     

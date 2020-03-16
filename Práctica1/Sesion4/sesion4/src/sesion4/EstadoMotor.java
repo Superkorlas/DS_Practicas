@@ -12,5 +12,6 @@ package sesion4;
 public enum EstadoMotor {
     ACELERANDO,
     FRENANDO,
-    APAGADO
+    APAGADO,
+    ENCENDIDO
 }
