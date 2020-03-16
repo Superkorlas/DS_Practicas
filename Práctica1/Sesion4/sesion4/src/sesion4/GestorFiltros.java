@@ -17,10 +17,10 @@ public class GestorFiltros extends Thread {
     CadenaFiltros filtros;
 
     GestorFiltros() {
-        filtros = new CadenaFiltros();
+        this.filtros = new CadenaFiltros();
     }
     
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor) {
-        return filtros.ejecutar(revoluciones, estadoMotor);
+        return this.filtros.ejecutar(revoluciones, estadoMotor);
     }
 }

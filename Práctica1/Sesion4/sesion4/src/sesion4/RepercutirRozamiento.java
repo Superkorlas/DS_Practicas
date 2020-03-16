@@ -10,10 +10,12 @@ package sesion4;
  * @author super
  */
 public class RepercutirRozamiento implements Filtro {
+    
+    double repercusion = 1;
 
     @Override
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return revoluciones -= this.repercusion;
     }
 
 }

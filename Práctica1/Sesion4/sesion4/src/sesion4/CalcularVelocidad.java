@@ -11,9 +11,24 @@ package sesion4;
  * @author super
  */
 public class CalcularVelocidad  implements Filtro {
+    
+    double variacion = 100;
+    
     @Override
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch(estadoMotor) {
+            case ACELERANDO:
+                revoluciones += this.variacion;
+                break;
+            case FRENANDO:
+                revoluciones -= this.variacion;
+                break;
+            case APAGADO:
+                revoluciones = 0;
+                break;
+        }
+        
+        return revoluciones;
     }
     
 }

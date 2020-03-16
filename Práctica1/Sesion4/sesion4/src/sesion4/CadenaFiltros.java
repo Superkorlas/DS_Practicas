@@ -15,12 +15,12 @@ public class CadenaFiltros {
     ArrayList<Filtro> filtros = new ArrayList<>();
     
     CadenaFiltros() {
-        filtros.add(new CalcularVelocidad());
-        filtros.add(new RepercutirRozamiento());
+        this.filtros.add(new CalcularVelocidad());
+        this.filtros.add(new RepercutirRozamiento());
     }
     
     public double ejecutar(double revoluciones, EstadoMotor estado) {
-        for(Filtro filtro : filtros) {
+        for(Filtro filtro : this.filtros) {
             revoluciones = filtro.ejecutar(revoluciones, estado);
         }
         return revoluciones;

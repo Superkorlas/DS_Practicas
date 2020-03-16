@@ -13,21 +13,25 @@ import java.util.logging.Logger;
  * @author super
  */
 public class AudiR8 extends Thread {
+
     GestorFiltros gestorFiltros;
     Salpicadero salpicadero;
     EstadoMotor estado;
     double revoluciones;
+    final double maxRevoluciones;
 
     AudiR8() {
-         gestorFiltros = new GestorFiltros();
-        salpicadero = new Salpicadero();
-        estado = EstadoMotor.APAGADO;
-        revoluciones = 0.0;
+        this.gestorFiltros = new GestorFiltros();
+        this.salpicadero = new Salpicadero();
+        this.estado = EstadoMotor.APAGADO;
+        this.revoluciones = 0.0;
+        this.maxRevoluciones = 500;
+        
         this.run();
     }
 
     public double getRevoluciones() {
-        return revoluciones;
+        return this.revoluciones;
     }
 
     public void setEstado(EstadoMotor estado) {
@@ -38,7 +42,7 @@ public class AudiR8 extends Thread {
     public void run() {
         super.run();
         while (true) {
-            revoluciones = gestorFiltros.ejecutar(revoluciones, estado);
+            this.revoluciones = gestorFiltros.ejecutar(this.revoluciones, this.estado);
             try {
                 this.sleep(10000);
             } catch (InterruptedException ex) {
