@@ -20,19 +20,9 @@ public class Main {
         Temperatura temperaturaObservableAnd = new Temperatura();
         Temperatura temperaturaObservableGal = new Temperatura();
         
-        MapaMeteorologico mapa = new MapaMeteorologico(temperaturaObservable, temperaturaObservableAnd, temperaturaObservableGal);
+        TiempoSatelital mapa = new TiempoSatelital(temperaturaObservable, temperaturaObservableAnd, temperaturaObservableGal);
         PantallaTemperatura pantalla = new PantallaTemperatura(temperaturaObservable);
         BotonCambio boton = new BotonCambio(temperaturaObservable);
         GraficaTemperatura grafica  = new GraficaTemperatura(temperaturaObservable);
-     
-        System.out.println("Antes de run");
-        temperaturaObservable.start();
-        System.out.println("Entre run 1 y 2");
-        temperaturaObservableAnd.start();
-        System.out.println("Entre run 2 y 3");
-        temperaturaObservableGal.start();
-        System.out.println("Entre run 3 y 4");
-        pantalla.start();
-        System.out.println("Todas las thread running");
     }  
 }

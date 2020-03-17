@@ -24,6 +24,7 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Runnable 
         this.observable = (Temperatura) observable;
         initComponents();
         this.setVisible(true);
+        this.start();
     }
 
     /**
@@ -37,6 +38,7 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Runnable 
 
         temperatura = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
+        temperaturaF = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +48,9 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Runnable 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         titulo.setText("Temperatura:");
 
+        temperaturaF.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        temperaturaF.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -53,18 +58,28 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Runnable 
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(temperatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(temperatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(temperaturaF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(184, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(308, Short.MAX_VALUE)
+                    .addComponent(temperaturaF, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(21, 21, 21)))
         );
 
         pack();
@@ -74,6 +89,7 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Runnable 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel temperatura;
+    private javax.swing.JLabel temperaturaF;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
     
@@ -87,9 +103,15 @@ public class PantallaTemperatura extends javax.swing.JFrame implements Runnable 
     @Override
     public void run() {
         while (true) {
-            String temp = Double.toString(this.observable.getState());
-            //DecimalFormat formato = new DecimalFormat("#.#");
+            double state = this.observable.getState();
+            String temp = Double.toString(state);
             this.temperatura.setText(temp + "º");
+            
+            double stateF = (state * 9 / 5) + 32;
+            String tempF = Double.toString(stateF);
+            this.temperaturaF.setText(tempF + "ºF");
+            
+            
             System.out.println("Temperatura desde pantalla: " + temp + "º");
             try {
                 long interval = (long) Math.random() * 4 +1;

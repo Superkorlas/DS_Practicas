@@ -26,7 +26,7 @@ public class Temperatura extends Observable implements Runnable {
         state = 0.0f;
         minimo = -10;
         maximo = 35;
-        //this.run();
+        this.start();
     }
 
     public double getState() {
