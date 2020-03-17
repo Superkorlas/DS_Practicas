@@ -43,15 +43,15 @@ public class Salpicadero extends javax.swing.JFrame
 
         this.setVisible(true);
         
-        // No estoy seguro, no se ejecuta
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {System.out.println("jeje"); System.exit(0);}
-        });
+        // No se ejecuta
+//        this.addWindowListener(new WindowAdapter() {
+//            public void windowClosing(WindowEvent e) {System.out.println("jeje"); System.exit(0);}
+//        });
     }
     
     public void ejecutar(double revoluciones, EstadoMotor estadoMotor) {
         double velocidad = this.velocimetro.actualiza(revoluciones, this.radioEje);
-        this.cuentaKilometros.actualizar(velocidad);
+        this.cuentaKilometros.actualizar(velocidad, estadoMotor);
         this.cuentaRevoluciones.actualiza(revoluciones);
     }
     
@@ -67,6 +67,11 @@ public class Salpicadero extends javax.swing.JFrame
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +86,10 @@ public class Salpicadero extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -68,6 +68,11 @@ public class PanelBotones extends javax.swing.JFrame {
         BotonFrenar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         BotonEncender.setText("jToggleButton1");
         BotonEncender.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +185,10 @@ public class PanelBotones extends javax.swing.JFrame {
         }
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonFrenarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

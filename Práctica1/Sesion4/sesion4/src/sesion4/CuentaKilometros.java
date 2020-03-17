@@ -13,8 +13,10 @@ public class CuentaKilometros extends javax.swing.JPanel {
 
     double kilometrosTotales = 0.0;
     double kilometrosParciales = 0.0;
-    double lastTime = 0.0;
-    double currentTime = 0.0;
+    
+    double timeSinceStart = System.nanoTime() / 1000;
+    double oldTimeSinceStart = 0.0;
+    double deltaTime = 0.0;
     
     /**
      * Creates new form CuentaKilometros
@@ -24,12 +26,28 @@ public class CuentaKilometros extends javax.swing.JPanel {
         this.setVisible(true);
     }
     
-    public void actualizar(double velocidad) {
+    public void actualizar(double velocidad, EstadoMotor estadoMotor) {
+        this.actualizaReloj();
+        
+        double kilometrosAndados = velocidad / 3600; //velocidad-> km/s
+        kilometrosAndados *= this.deltaTime;
         
         
+        if (estadoMotor == EstadoMotor.APAGADO)
+            this.kilometrosParciales = 0.0;
+        else
+            this.kilometrosParciales += kilometrosAndados;
+        
+        this.kilometrosTotales += kilometrosAndados;
         // Tras hacer  las cuentas
         this.contadorReciente.setText(Double.toString(this.kilometrosParciales));
         this.contadorTotal.setText(Double.toString(kilometrosTotales));
+    }
+    
+    private void actualizaReloj() {
+        this.timeSinceStart = System.nanoTime() / 1000000000.0;
+        this.deltaTime = this.timeSinceStart - this.oldTimeSinceStart;
+        this.oldTimeSinceStart = this.timeSinceStart;
     }
 
     /**
