@@ -25,7 +25,7 @@ public class AudiR8 extends Thread {
         this.revoluciones = 0.0;        
         this.gestorFiltros = new GestorFiltros();
         this.salpicadero = new Salpicadero();
-        this.controles = new PanelBotones(this);
+        //this.controles = new PanelBotones(this);
         
         this.run();
     }

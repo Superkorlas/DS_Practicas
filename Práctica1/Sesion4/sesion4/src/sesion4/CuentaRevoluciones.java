@@ -55,18 +55,17 @@ public class CuentaRevoluciones extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(60, 60, 60)
                             .addComponent(jLabel2))))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(revoluciones)
-                .addContainerGap(416, Short.MAX_VALUE))
+                .addComponent(revoluciones))
         );
     }// </editor-fold>//GEN-END:initComponents
 
