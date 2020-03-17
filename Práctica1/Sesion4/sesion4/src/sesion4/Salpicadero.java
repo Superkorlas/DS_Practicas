@@ -5,6 +5,9 @@
  */
 package sesion4;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 
 /**
  *
@@ -12,7 +15,10 @@ package sesion4;
  */
 public class Salpicadero extends javax.swing.JFrame
 {
+    Velocimetro velocimetro = new Velocimetro();
+    CuentaKilometros cuentaKilometros = new CuentaKilometros();
     CuentaRevoluciones cuentaRevoluciones = new CuentaRevoluciones();
+    double radioEje = 0.15;
     
     /**
      * Creates new form Salpicadero
@@ -22,16 +28,31 @@ public class Salpicadero extends javax.swing.JFrame
         this.setSize(300, 600);
         this.setResizable(false);
         
+        //Añadimos el velocimetro
+        this.getContentPane().add(this.velocimetro);
+        this.velocimetro.setBounds(0, 0, 300, 100);
         
+        //Añadimos el cuenta kilometros
+        this.getContentPane().add(this.cuentaKilometros);
+        this.cuentaKilometros.setBounds(0, 200, 300, 160);
+        
+        //Añadimos el cuentarrevoluciones
         this.getContentPane().add(this.cuentaRevoluciones);
         this.cuentaRevoluciones.setBounds(0, 400, 300, 100);
         
 
         this.setVisible(true);
+        
+        // No estoy seguro, no se ejecuta
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {System.out.println("jeje"); System.exit(0);}
+        });
     }
     
     public void ejecutar(double revoluciones, EstadoMotor estadoMotor) {
-        //this.revoluciones.setText(Double.toString(revoluciones));
+        double velocidad = this.velocimetro.actualiza(revoluciones, this.radioEje);
+        this.cuentaKilometros.actualizar(velocidad);
+        this.cuentaRevoluciones.actualiza(revoluciones);
     }
     
     

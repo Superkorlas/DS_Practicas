@@ -18,6 +18,10 @@ public class CuentaRevoluciones extends javax.swing.JPanel {
         initComponents();
         this.setVisible(true);
     }
+    
+    public void actualiza(double revoluciones) {
+        this.revoluciones.setText(Double.toString(revoluciones));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
