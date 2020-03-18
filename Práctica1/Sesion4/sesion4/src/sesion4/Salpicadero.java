@@ -42,11 +42,7 @@ public class Salpicadero extends javax.swing.JFrame
         
 
         this.setVisible(true);
-        
-        // No se ejecuta
-//        this.addWindowListener(new WindowAdapter() {
-//            public void windowClosing(WindowEvent e) {System.out.println("jeje"); System.exit(0);}
-//        });
+
     }
     
     public void ejecutar(double revoluciones, EstadoMotor estadoMotor) {
