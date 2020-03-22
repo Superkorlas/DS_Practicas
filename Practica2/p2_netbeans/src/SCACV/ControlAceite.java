@@ -17,10 +17,10 @@ public class ControlAceite extends javax.swing.JPanel implements Observer {
     /**
      * Creates new form controlAceite
      */
-    public ControlAceite(Consumible aceiteObservable) {
+    public ControlAceite(Observable aceiteObservable) {
         initComponents();
         this.setVisible(true);
-        // (observable) aceiteObservable.addObserver(this);
+        aceiteObservable.addObserver(this);
     }
 
     /**

@@ -18,7 +18,7 @@ public class ControlConsumibles extends javax.swing.JPanel {
      */
     public ControlConsumibles(MonitorConsumos consumos) {
         initComponents();
-        this.controlAceite = new ControlAceite(consumos.aceite);
+        this.controlAceite = new ControlAceite((ConsumiblesVehiculo)consumos.aceite);
         this.controlAceite.setBounds(0,0, 387, 85);
         this.add(this.controlAceite);
         
