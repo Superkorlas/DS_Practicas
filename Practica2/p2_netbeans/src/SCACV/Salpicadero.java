@@ -41,7 +41,7 @@ public class Salpicadero extends javax.swing.JFrame
         
         //Añadimos el control de consumibles
         this.getContentPane().add(this.controlConsumibles);
-        this.controlConsumibles.setBounds(300, 166, 387, 255);   
+        this.controlConsumibles.setBounds(300, 166, 387, 500);   
         
         //Añadimos el velocimetro
         this.getContentPane().add(this.velocimetro);

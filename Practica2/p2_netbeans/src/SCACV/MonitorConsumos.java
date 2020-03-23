@@ -14,16 +14,16 @@ import java.util.ArrayList;
 public class MonitorConsumos {
     
     Salpicadero salpicadero;
-    Consumible gasolina;
-    Consumible aceite;
-    Consumible frenos;
-    Consumible general;
+    TanqueCombustible gasolina;
+    ConsumibleVehiculo aceite;
+    ConsumibleVehiculo frenos;
+    ConsumibleVehiculo general;
     
     public MonitorConsumos() {
         gasolina = new TanqueCombustible();
-        aceite = new ConsumiblesVehiculo(5000000);
-        frenos = new ConsumiblesVehiculo(100000000);
-        general = new ConsumiblesVehiculo(1000000000);
+        aceite = new ConsumibleVehiculo(5000000);
+        frenos = new ConsumibleVehiculo(100000000);
+        general = new ConsumibleVehiculo(1000000000);
     }
     
     public void calcular(double revoluciones, EstadoMotor estadoMotor) {

@@ -11,12 +11,12 @@ import java.util.Observable;
  *
  * @author jose
  */
-public class ConsumiblesVehiculo extends Observable implements Consumible {
+public class ConsumibleVehiculo extends Observable implements Consumible {
     boolean alert;
     double MAX;
     double actual;
 
-    public ConsumiblesVehiculo(double maximo) {
+    public ConsumibleVehiculo(double maximo) {
         alert = false;
         MAX = maximo;
         actual = MAX;
@@ -24,11 +24,22 @@ public class ConsumiblesVehiculo extends Observable implements Consumible {
     
     @Override
     public void calcularConsumo(double revoluciones, EstadoMotor estadoMotor) {
-        actual = actual - revoluciones * 0.1;
+        actual = actual - revoluciones*1000;
+        if (actual <= 0) {
+            actual = 0;
+            this.alertar();
+        }
     }
     
+    @Override
     public void reset() {
         actual = MAX;
+    }
+    
+    public void alertar() {
+        System.out.println("Alertando");
+        this.setChanged();
+        this.notifyObservers();
     }
     
     

@@ -17,7 +17,12 @@ public class TanqueCombustible implements Consumible {
 
     @Override
     public void calcularConsumo(double revoluciones, EstadoMotor estadoMotor) {
-        actual = actual - revoluciones * 0.1;
+        this.actual = this.actual - revoluciones * 0.1;
+    }
+    
+    @Override
+    public void reset() {
+        this.actual = this.MAX;
     }
     
 }

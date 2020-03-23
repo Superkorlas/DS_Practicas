@@ -12,13 +12,16 @@ import java.util.Observer;
  *
  * @author jose
  */
-public class ControlAceite extends javax.swing.JPanel implements Observer {
+public class ControlConsumible extends javax.swing.JPanel implements Observer {
 
-    /**
-     * Creates new form controlAceite
-     */
-    public ControlAceite(Observable aceiteObservable) {
+    ConsumibleVehiculo consumible;
+    
+    public ControlConsumible(ConsumibleVehiculo aceiteObservable, String name) {
         initComponents();
+        this.consumible = aceiteObservable;
+        this.jLabel1.setText(name);
+        this.jButton1.setText("Cambio de " + name);
+        this.luzAviso.setSelected(false);
         this.setVisible(true);
         aceiteObservable.addObserver(this);
     }
@@ -33,15 +36,15 @@ public class ControlAceite extends javax.swing.JPanel implements Observer {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        luzAviso = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Aceite");
 
-        jCheckBox1.setText("Estado aceite");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        luzAviso.setText("Estado");
+        luzAviso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                luzAvisoActionPerformed(evt);
             }
         });
 
@@ -60,7 +63,7 @@ public class ControlAceite extends javax.swing.JPanel implements Observer {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(luzAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -71,29 +74,30 @@ public class ControlAceite extends javax.swing.JPanel implements Observer {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(luzAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void luzAvisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luzAvisoActionPerformed
+        this.luzAviso.setSelected(!this.luzAviso.isSelected()); // Para que no haga nada al pulsarlo
+    }//GEN-LAST:event_luzAvisoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       this.luzAviso.setSelected(false);
+       this.consumible.reset();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JCheckBox luzAviso;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.luzAviso.setSelected(true);
     }
 }

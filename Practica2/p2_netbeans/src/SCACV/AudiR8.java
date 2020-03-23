@@ -49,7 +49,6 @@ public class AudiR8 extends Thread {
             this.revoluciones = gestorFiltros.ejecutar(this.revoluciones, this.estado);
             this.monitorConsumos.calcular(this.revoluciones, this.estado);
             this.salpicadero.ejecutar(this.revoluciones, this.estado);
-            System.out.println("Actualizando...");
             try {
                 this.sleep(1000);
             } catch (InterruptedException ex) {

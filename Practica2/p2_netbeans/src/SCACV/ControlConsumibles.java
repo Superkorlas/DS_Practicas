@@ -11,16 +11,27 @@ package SCACV;
  */
 public class ControlConsumibles extends javax.swing.JPanel {
     
-    ControlAceite controlAceite;
+    ControlConsumible controlAceite;
+    ControlConsumible controlFrenos;
+    ControlConsumible controlRevision;
 
     /**
      * Creates new form IndicadoresLuminosos
      */
     public ControlConsumibles(MonitorConsumos consumos) {
         initComponents();
-        this.controlAceite = new ControlAceite((ConsumiblesVehiculo)consumos.aceite);
+        this.controlAceite = new ControlConsumible(consumos.aceite, "aceite");
         this.controlAceite.setBounds(0,0, 387, 85);
         this.add(this.controlAceite);
+        
+        this.controlFrenos = new ControlConsumible(consumos.frenos, "frenos");
+        this.controlFrenos.setBounds(0,100, 387, 85);
+        this.add(this.controlFrenos);
+        
+        this.controlRevision = new ControlConsumible(consumos.general, "revision");
+        this.controlRevision.setBounds(0,200, 387, 85);
+        this.add(this.controlRevision);
+        
         
         this.setVisible(true);
     }
