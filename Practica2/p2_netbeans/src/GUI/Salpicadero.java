@@ -24,6 +24,10 @@ public class Salpicadero extends javax.swing.JFrame
     ControlConsumibles controlConsumibles;
     double radioEje = 0.15;
     PanelBotones controles;
+
+    public PanelBotones getControles() {
+        return controles;
+    }
     
     
     

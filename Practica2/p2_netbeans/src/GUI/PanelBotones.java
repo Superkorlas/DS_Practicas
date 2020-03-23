@@ -30,7 +30,7 @@ public class PanelBotones extends javax.swing.JPanel {
         this.BotonEncender.setForeground(Color.green);
     }
     
-    private void actualizaInterfaz() {
+    public void actualizaInterfaz() {
         this.EtiqMostrarEstado.setText(this.coche.getEstado().toString());
         
         if(this.BotonEncender.isSelected()){

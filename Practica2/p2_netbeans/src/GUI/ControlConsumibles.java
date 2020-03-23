@@ -16,6 +16,7 @@ public class ControlConsumibles extends javax.swing.JPanel {
     ControlConsumible controlAceite;
     ControlConsumible controlFrenos;
     ControlConsumible controlRevision;
+    ControlConsumible controlCombustible;
 
     /**
      * Creates new form IndicadoresLuminosos
@@ -33,6 +34,10 @@ public class ControlConsumibles extends javax.swing.JPanel {
         this.controlRevision = new ControlConsumible(consumos.getGeneral(), "revision");
         this.controlRevision.setBounds(0,200, 387, 85);
         this.add(this.controlRevision);
+        
+        this.controlCombustible = new ControlConsumible(consumos.getGasolina(), "combustible");
+        this.controlCombustible.setBounds(0,300, 387, 85);
+        this.add(this.controlCombustible);
         
         
         this.setVisible(true);

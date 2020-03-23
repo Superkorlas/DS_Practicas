@@ -19,8 +19,8 @@ public class ConsumibleVehiculo extends Observable implements Consumible {
     double MAX;
     double actual;
     ArrayList<Object> estado = new ArrayList<>();
-    private Clock clock = new Clock();
-    private double revolucionesAnt = 0;
+    protected Clock clock = new Clock();
+    protected double revolucionesAnt = 0;
 
     public ConsumibleVehiculo(double maximo) {
         this.alert = false;
@@ -36,8 +36,13 @@ public class ConsumibleVehiculo extends Observable implements Consumible {
         this.revolucionesAnt = revoluciones;
         double revolucionesDadas = (revolucionesMedias / 60) * this.clock.getDeltaTime();
 
-        this.actual -= revolucionesDadas;
+        this.actual -= revolucionesDadas * 100000;
+        
+        this.actualizarEstado(estadoMotor);
 
+    }
+
+    protected void actualizarEstado(EstadoMotor estadoMotor) {
         this.estado.clear();
         this.alert = false;
         if (this.actual <= 0) {

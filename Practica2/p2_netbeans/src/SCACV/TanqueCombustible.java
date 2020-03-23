@@ -17,9 +17,19 @@ public class TanqueCombustible extends ConsumibleVehiculo {
 
     @Override
     public void calcularConsumo(double revoluciones, EstadoMotor estadoMotor) {
-        this.actual = this.actual - revoluciones * 0.1;
+        this.clock.actualizaReloj();
         
-        super.calcularConsumo(revoluciones, estadoMotor);
+        double revolucionesMedias = (revoluciones + this.revolucionesAnt) / 2;
+        this.revolucionesAnt = revoluciones;
+        double revolucionesDadas = (revolucionesMedias / 60) * this.clock.getDeltaTime();
+        double gastoCombustible = revolucionesDadas * revolucionesDadas * 5 / 100000000000.0;
+
+        this.actual -= gastoCombustible * 100000000000.0;
+
+        this.actualizarEstado(estadoMotor);
+
     }
+    
+    
 
 }

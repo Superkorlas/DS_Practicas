@@ -50,6 +50,10 @@ public class AudiR8 extends Thread {
             this.revoluciones = gestorFiltros.ejecutar(this.revoluciones, this.estado);
             this.monitorConsumos.calcular(this.revoluciones, this.estado);
             this.salpicadero.ejecutar(this.revoluciones, this.estado);
+            if (this.monitorConsumos.gasolina.alert) {
+                this.setEstado(EstadoMotor.APAGADO);
+                this.salpicadero.getControles().actualizaInterfaz();
+            }
             try {
                 this.sleep(1000);
             } catch (InterruptedException ex) {
