@@ -9,20 +9,17 @@ package SCACV;
  *
  * @author jose
  */
-public class TanqueCombustible implements Consumible {
-    
-    double MAX = 1000;
-    
-    double actual = MAX;
+public class TanqueCombustible extends ConsumibleVehiculo {
+
+    public TanqueCombustible(double maximo) {
+        super(maximo);
+    }
 
     @Override
     public void calcularConsumo(double revoluciones, EstadoMotor estadoMotor) {
         this.actual = this.actual - revoluciones * 0.1;
+        
+        super.calcularConsumo(revoluciones, estadoMotor);
     }
-    
-    @Override
-    public void reset() {
-        this.actual = this.MAX;
-    }
-    
+
 }

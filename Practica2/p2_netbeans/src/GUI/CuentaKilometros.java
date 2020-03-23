@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package GUI;
+
+import SCACV.EstadoMotor;
+import Utils.Clock;
 
 /**
  *
@@ -13,10 +16,8 @@ public class CuentaKilometros extends javax.swing.JPanel {
 
     double kilometrosTotales = 0.0;
     double kilometrosParciales = 0.0;
-    
-    double timeSinceStart = System.nanoTime() / 1000;
-    double oldTimeSinceStart = 0.0;
-    double deltaTime = 0.0;
+
+    private Clock clock = new Clock();
     
     /**
      * Creates new form CuentaKilometros
@@ -27,10 +28,10 @@ public class CuentaKilometros extends javax.swing.JPanel {
     }
     
     public void actualizar(double velocidad, EstadoMotor estadoMotor) {
-        this.actualizaReloj();
+        this.clock.actualizaReloj();
         
         double kilometrosAndados = velocidad / 3600; //velocidad-> km/s
-        kilometrosAndados *= this.deltaTime;
+        kilometrosAndados *= this.clock.getDeltaTime();
         
         
         if (estadoMotor == EstadoMotor.APAGADO)
@@ -42,12 +43,6 @@ public class CuentaKilometros extends javax.swing.JPanel {
         // Tras hacer  las cuentas
         this.contadorReciente.setText(Double.toString(this.kilometrosParciales));
         this.contadorTotal.setText(Double.toString(kilometrosTotales));
-    }
-    
-    private void actualizaReloj() {
-        this.timeSinceStart = System.nanoTime() / 1000000000.0;
-        this.deltaTime = this.timeSinceStart - this.oldTimeSinceStart;
-        this.oldTimeSinceStart = this.timeSinceStart;
     }
 
     /**

@@ -5,6 +5,7 @@
  */
 package SCACV;
 
+import GUI.Salpicadero;
 import java.util.ArrayList;
 
 /**
@@ -14,16 +15,36 @@ import java.util.ArrayList;
 public class MonitorConsumos {
     
     Salpicadero salpicadero;
-    TanqueCombustible gasolina;
+    ConsumibleVehiculo gasolina;
     ConsumibleVehiculo aceite;
     ConsumibleVehiculo frenos;
     ConsumibleVehiculo general;
     
     public MonitorConsumos() {
-        gasolina = new TanqueCombustible();
+        gasolina = new TanqueCombustible(1000);
         aceite = new ConsumibleVehiculo(5000000);
         frenos = new ConsumibleVehiculo(100000000);
         general = new ConsumibleVehiculo(1000000000);
+    }
+
+    public Salpicadero getSalpicadero() {
+        return salpicadero;
+    }
+
+    public ConsumibleVehiculo getGasolina() {
+        return gasolina;
+    }
+
+    public ConsumibleVehiculo getAceite() {
+        return aceite;
+    }
+
+    public ConsumibleVehiculo getFrenos() {
+        return frenos;
+    }
+
+    public ConsumibleVehiculo getGeneral() {
+        return general;
     }
     
     public void calcular(double revoluciones, EstadoMotor estadoMotor) {

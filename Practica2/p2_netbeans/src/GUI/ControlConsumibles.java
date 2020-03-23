@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package GUI;
+
+import SCACV.MonitorConsumos;
 
 /**
  *
@@ -20,15 +22,15 @@ public class ControlConsumibles extends javax.swing.JPanel {
      */
     public ControlConsumibles(MonitorConsumos consumos) {
         initComponents();
-        this.controlAceite = new ControlConsumible(consumos.aceite, "aceite");
+        this.controlAceite = new ControlConsumible(consumos.getAceite(), "aceite");
         this.controlAceite.setBounds(0,0, 387, 85);
         this.add(this.controlAceite);
         
-        this.controlFrenos = new ControlConsumible(consumos.frenos, "frenos");
+        this.controlFrenos = new ControlConsumible(consumos.getFrenos(), "frenos");
         this.controlFrenos.setBounds(0,100, 387, 85);
         this.add(this.controlFrenos);
         
-        this.controlRevision = new ControlConsumible(consumos.general, "revision");
+        this.controlRevision = new ControlConsumible(consumos.getGeneral(), "revision");
         this.controlRevision.setBounds(0,200, 387, 85);
         this.add(this.controlRevision);
         

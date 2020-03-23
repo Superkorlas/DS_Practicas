@@ -5,6 +5,7 @@
  */
 package SCACV;
 
+import GUI.Salpicadero;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +21,7 @@ public class AudiR8 extends Thread {
     EstadoMotor estado;
     double revoluciones;
     
-    AudiR8() {
+    public AudiR8() {
         this.estado = EstadoMotor.APAGADO;
         this.revoluciones = 0.0;        
         this.gestorFiltros = new GestorFiltros();

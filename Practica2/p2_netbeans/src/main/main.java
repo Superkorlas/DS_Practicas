@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package main;
+
+import SCACV.AudiR8;
 
 /**
  *
@@ -11,9 +13,6 @@ package SCACV;
  */
 public class main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         AudiR8 cochazo = new AudiR8();
     }
