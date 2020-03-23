@@ -10,7 +10,6 @@ package SCACV;
  * @author jose
  */
 public interface Consumible {
-    
     public void calcularConsumo(double revoluciones, EstadoMotor estadoMotor);
     public void reset();
 }

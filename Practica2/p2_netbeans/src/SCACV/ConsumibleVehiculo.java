@@ -5,6 +5,7 @@
  */
 package SCACV;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -15,6 +16,7 @@ public class ConsumibleVehiculo extends Observable implements Consumible {
     boolean alert;
     double MAX;
     double actual;
+    ArrayList<Object> estado = new ArrayList<>();
 
     public ConsumibleVehiculo(double maximo) {
         alert = false;
@@ -24,11 +26,14 @@ public class ConsumibleVehiculo extends Observable implements Consumible {
     
     @Override
     public void calcularConsumo(double revoluciones, EstadoMotor estadoMotor) {
+        estado.clear();
         actual = actual - revoluciones*1000;
+        alert = false;
         if (actual <= 0) {
             actual = 0;
-            this.alertar();
+            alert = true;
         }
+         this.alertar(estadoMotor);
     }
     
     @Override
@@ -36,10 +41,11 @@ public class ConsumibleVehiculo extends Observable implements Consumible {
         actual = MAX;
     }
     
-    public void alertar() {
-        System.out.println("Alertando");
+    public void alertar(EstadoMotor estadoMotor) {
         this.setChanged();
-        this.notifyObservers();
+        estado.add(estadoMotor);
+        estado.add(this.alert);
+        this.notifyObservers(estado);
     }
     
     

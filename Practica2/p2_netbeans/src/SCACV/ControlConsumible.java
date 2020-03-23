@@ -5,6 +5,8 @@
  */
 package SCACV;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,14 +18,15 @@ public class ControlConsumible extends javax.swing.JPanel implements Observer {
 
     ConsumibleVehiculo consumible;
     
-    public ControlConsumible(ConsumibleVehiculo aceiteObservable, String name) {
+    public ControlConsumible(ConsumibleVehiculo consumible, String name) {
         initComponents();
-        this.consumible = aceiteObservable;
+        this.consumible = consumible;
         this.jLabel1.setText(name);
         this.jButton1.setText("Cambio de " + name);
         this.luzAviso.setSelected(false);
+        this.jButton1.setEnabled(false);
         this.setVisible(true);
-        aceiteObservable.addObserver(this);
+        consumible.addObserver(this);
     }
 
     /**
@@ -87,6 +90,7 @@ public class ControlConsumible extends javax.swing.JPanel implements Observer {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.luzAviso.setSelected(false);
        this.consumible.reset();
+       this.jButton1.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -98,6 +102,13 @@ public class ControlConsumible extends javax.swing.JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        this.luzAviso.setSelected(true);
+        boolean alert = (boolean) ((ArrayList<Object>)arg).get(1);
+        if (alert) {
+            this.luzAviso.setSelected(true);
+            EstadoMotor estado = (EstadoMotor) ((ArrayList<Object>)arg).get(0);
+            if (estado == EstadoMotor.APAGADO) {
+                this.jButton1.setEnabled(true);
+            }
+        }
     }
 }
