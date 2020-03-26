@@ -37,18 +37,18 @@ public class Salpicadero extends javax.swing.JFrame
     public Salpicadero(AudiR8 coche, MonitorConsumos consumos) {
         
         initComponents();
-        this.setSize(687, 600);
+        this.setSize(687, 766);
         this.setResizable(false);
         this.controles = new PanelBotones(coche);
         this.controlConsumibles = new ControlConsumibles(consumos);
         
         // Añadimos el panel botones
         this.getContentPane().add(this.controles);
-        this.controles.setBounds(300, 0, 387, 166);  
+        this.controles.setBounds(300, 0, 387, 266);  
         
         //Añadimos el control de consumibles
         this.getContentPane().add(this.controlConsumibles);
-        this.controlConsumibles.setBounds(300, 166, 387, 500);   
+        this.controlConsumibles.setBounds(300, 266, 387, 500);   
         
         //Añadimos el velocimetro
         this.getContentPane().add(this.velocimetro);

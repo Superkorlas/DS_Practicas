@@ -36,7 +36,7 @@ public class ConsumibleVehiculo extends Observable implements Consumible {
         this.revolucionesAnt = revoluciones;
         double revolucionesDadas = (revolucionesMedias / 60) * this.clock.getDeltaTime();
 
-        this.actual -= revolucionesDadas * 100000;
+        this.actual -= revolucionesDadas;
         
         this.actualizarEstado(estadoMotor);
 

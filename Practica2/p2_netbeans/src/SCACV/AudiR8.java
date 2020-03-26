@@ -19,9 +19,12 @@ public class AudiR8 extends Thread {
     MonitorConsumos monitorConsumos;
     Salpicadero salpicadero;
     EstadoMotor estado;
+    GestorSCACV SCACV;
     double revoluciones;
+    boolean reiniciando = false;
     
     public AudiR8() {
+        this.SCACV = new GestorSCACV();
         this.estado = EstadoMotor.APAGADO;
         this.revoluciones = 0.0;        
         this.gestorFiltros = new GestorFiltros();
@@ -29,6 +32,10 @@ public class AudiR8 extends Thread {
         this.salpicadero = new Salpicadero(this, this.monitorConsumos);
         
         this.run();
+    }
+
+    public GestorSCACV getSCACV() {
+        return SCACV;
     }
 
     public double getRevoluciones() {
@@ -47,13 +54,14 @@ public class AudiR8 extends Thread {
     public void run() {
         super.run();
         while (true) {
+            this.estado = SCACV.ejecutar(this.revoluciones, this.estado);
             this.revoluciones = gestorFiltros.ejecutar(this.revoluciones, this.estado);
             this.monitorConsumos.calcular(this.revoluciones, this.estado);
             this.salpicadero.ejecutar(this.revoluciones, this.estado);
             if (this.monitorConsumos.gasolina.alert) {
                 this.setEstado(EstadoMotor.APAGADO);
-                this.salpicadero.getControles().actualizaInterfaz();
             }
+            this.salpicadero.getControles().actualizarEstado(this.monitorConsumos.gasolina.alert);
             try {
                 this.sleep(1000);
             } catch (InterruptedException ex) {

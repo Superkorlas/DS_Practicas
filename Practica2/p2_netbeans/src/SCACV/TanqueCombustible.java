@@ -24,7 +24,7 @@ public class TanqueCombustible extends ConsumibleVehiculo {
         double revolucionesDadas = (revolucionesMedias / 60) * this.clock.getDeltaTime();
         double gastoCombustible = revolucionesDadas * revolucionesDadas * 5 / 100000000000.0;
 
-        this.actual -= gastoCombustible * 100000000000.0;
+        this.actual -= gastoCombustible;
 
         this.actualizarEstado(estadoMotor);
 
