@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import Utils.CarOperation;
+
 /**
  *
  * @author super
@@ -18,9 +20,9 @@ public class Velocimetro extends javax.swing.JPanel {
         initComponents();
         this.setVisible(true);
     }
-    
+
     public double actualiza(double revoluciones, double radioEje) {
-        double velocidad = 2*3.141592 * radioEje * revoluciones * 0.06;
+        double velocidad = CarOperation.velocidad(revoluciones, radioEje);
         this.velocidad.setText(Double.toString(velocidad));
         return velocidad;
     }

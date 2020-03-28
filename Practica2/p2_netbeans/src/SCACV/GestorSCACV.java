@@ -12,7 +12,8 @@ package SCACV;
 public class GestorSCACV {
     
     EstadoSCACV estadoSCACV;
-    float velocidadCrucero = 0;
+    double velocidadCrucero = 0;
+    boolean velocidadGuardada = false;
 
     public GestorSCACV() {
         this.estadoSCACV = estadoSCACV.APAGADO;
@@ -20,6 +21,10 @@ public class GestorSCACV {
 
     public EstadoSCACV getEstadoSCACV() {
         return estadoSCACV;
+    }
+    
+    public double getVelocidadCrucero() {
+        return this.velocidadCrucero;
     }
 
     public void setEstadoSCACV(EstadoSCACV estadoSCACV) {
@@ -30,17 +35,38 @@ public class GestorSCACV {
         EstadoMotor salida = estado;
         switch (this.estadoSCACV) {
             case MANTENIENDO:
-
+                if (!this.velocidadGuardada) {
+                    this.velocidadCrucero = revoluciones;
+                    this.velocidadGuardada = true;
+                }
+                salida = this.ajustarVelocidad(revoluciones);
                 break;
             case REINICIANDO:
-
+                salida = this.ajustarVelocidad(revoluciones);
+                if (revoluciones == this.velocidadCrucero) {
+                    this.estadoSCACV = EstadoSCACV.MANTENIENDO;
+                    this.velocidadGuardada = true;
+                }
                 break;
             case ACELERANDO:
-
+                salida = EstadoMotor.ACELERANDO;
+                break;
+            case APAGADO:
+                this.velocidadGuardada = false;
+                if (estado == EstadoMotor.APAGADO)
+                    this.velocidadCrucero = 0.0;
                 break;
         }
         return salida;
 
+    }
+    
+    public EstadoMotor ajustarVelocidad(double revoluciones) {
+        if (this.velocidadCrucero >= revoluciones) {
+            return EstadoMotor.ACELERANDO;
+        } else {
+            return EstadoMotor.FRENANDO;
+        }
     }
     
 }

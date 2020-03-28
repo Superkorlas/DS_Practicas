@@ -7,6 +7,7 @@ package GUI;
 
 import SCACV.AudiR8;
 import SCACV.EstadoMotor;
+import SCACV.EstadoSCACV;
 import java.awt.Color;
 
 /**
@@ -14,8 +15,9 @@ import java.awt.Color;
  * @author jose
  */
 public class PanelBotones extends javax.swing.JPanel {
- AudiR8 coche;
-    
+
+    AudiR8 coche;
+
     /**
      * Creates new form PanelBotones
      */
@@ -25,30 +27,42 @@ public class PanelBotones extends javax.swing.JPanel {
         this.parametrosIniciales();
         this.actualizaInterfaz();
     }
-    
+
     public void actualizaInterfaz() {
-        // estado del SCACV tiene prioridad sobre estadoMotor, solo mostrar estadoMotor si SCACV apagado
-        this.EtiqMostrarEstado.setText(this.coche.getEstado().toString());
-        
-        if(this.BotonEncender.isSelected()){
+
+        if (this.coche.getSCACV().getEstadoSCACV() != EstadoSCACV.APAGADO) {
+            this.EtiqMostrarEstado.setText(this.coche.getSCACV().getEstadoSCACV().toString());
+
+            this.BotonAcelerar.setText("ACELERAR");
+            this.BotonAcelerar.setSelected(false);
+            this.BotonFrenar.setText("FRENAR");
+            this.BotonFrenar.setSelected(false);
+        } else {
+            this.EtiqMostrarEstado.setText(this.coche.getEstado().toString());
+            this.BotonMantener.setSelected(false);
+            this.BotonReiniciar.setSelected(false);
+            this.BotonAcelerarSCACV.setSelected(false);
+        }
+
+        if (this.BotonEncender.isSelected()) {
             this.BotonEncender.setForeground(Color.red);
         } else {
             this.BotonEncender.setForeground(Color.green);
         }
-        
-        if(this.BotonAcelerar.isSelected()){
+
+        if (this.BotonAcelerar.isSelected()) {
             this.BotonAcelerar.setForeground(Color.red);
         } else {
             this.BotonAcelerar.setForeground(Color.black);
         }
-        
-        if(this.BotonFrenar.isSelected()){
+
+        if (this.BotonFrenar.isSelected()) {
             this.BotonFrenar.setForeground(Color.red);
         } else {
             this.BotonFrenar.setForeground(Color.black);
         }
     }
-    
+
     public void actualizarEstado(Boolean sinGasolina) {
         if (sinGasolina) {
             this.parametrosIniciales();
@@ -56,7 +70,7 @@ public class PanelBotones extends javax.swing.JPanel {
         this.BotonEncender.setEnabled(!sinGasolina);
         this.actualizaInterfaz();
     }
-    
+
     public void parametrosIniciales() {
         this.EtiqMostrarEstado.setForeground(Color.red);
         this.BotonAcelerar.setText("ACELERAR");
@@ -67,7 +81,7 @@ public class PanelBotones extends javax.swing.JPanel {
         this.BotonEncender.setSelected(false);
         this.BotonEncender.setForeground(Color.green);
     }
-    
+
     /**
      * Creates new form PanelBotones
      */
@@ -90,7 +104,7 @@ public class PanelBotones extends javax.swing.JPanel {
         BotonFrenar = new javax.swing.JToggleButton();
         BotonMantener = new javax.swing.JToggleButton();
         BotonReiniciar = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        BotonAcelerarSCACV = new javax.swing.JToggleButton();
 
         setPreferredSize(new java.awt.Dimension(387, 266));
 
@@ -127,8 +141,18 @@ public class PanelBotones extends javax.swing.JPanel {
         });
 
         BotonReiniciar.setText("SCACV reiniciar");
+        BotonReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonReiniciarActionPerformed(evt);
+            }
+        });
 
-        jToggleButton1.setText("SCACV acelelarar");
+        BotonAcelerarSCACV.setText("SCACV acelelarar");
+        BotonAcelerarSCACV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAcelerarSCACVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -142,7 +166,7 @@ public class PanelBotones extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jToggleButton1))
+                                .addComponent(BotonAcelerarSCACV))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +197,7 @@ public class PanelBotones extends javax.swing.JPanel {
                     .addComponent(BotonAcelerar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonMantener))
                 .addGap(1, 1, 1)
-                .addComponent(jToggleButton1)
+                .addComponent(BotonAcelerarSCACV)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonFrenar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,6 +207,8 @@ public class PanelBotones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonEncenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEncenderActionPerformed
+        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
+
         if (this.coche.getEstado() == EstadoMotor.APAGADO) {
             this.coche.setEstado(EstadoMotor.ENCENDIDO);
             this.BotonEncender.setText("APAGAR");
@@ -197,63 +223,82 @@ public class PanelBotones extends javax.swing.JPanel {
         }
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonEncenderActionPerformed
-     
+
     private void BotonAcelerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAcelerarActionPerformed
-        switch(this.coche.getEstado()) {
+        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
+
+        switch (this.coche.getEstado()) {
             case ACELERANDO:
-            this.coche.setEstado(EstadoMotor.ENCENDIDO);
-            this.BotonAcelerar.setText("ACELERAR");
-            break;
+                this.coche.setEstado(EstadoMotor.ENCENDIDO);
+                this.BotonAcelerar.setText("ACELERAR");
+                break;
             case FRENANDO:
-            this.BotonFrenar.setText("FRENAR");
-            this.BotonFrenar.setSelected(false);
+                this.BotonFrenar.setText("FRENAR");
+                this.BotonFrenar.setSelected(false);
             case ENCENDIDO:
-            this.coche.setEstado(EstadoMotor.ACELERANDO);
-            this.BotonAcelerar.setText("Soltar acelerador");
-            break;
+                this.coche.setEstado(EstadoMotor.ACELERANDO);
+                this.BotonAcelerar.setText("Soltar acelerador");
+                break;
             case APAGADO:
-            this.BotonAcelerar.setSelected(false);
-            break;
+                this.BotonAcelerar.setSelected(false);
+                break;
         }
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonAcelerarActionPerformed
 
     private void BotonFrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFrenarActionPerformed
-        switch(this.coche.getEstado()) {
+        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
+        switch (this.coche.getEstado()) {
             case FRENANDO:
-            this.coche.setEstado(EstadoMotor.ENCENDIDO);
-            this.BotonFrenar.setText("FRENAR");
-            break;
+                this.coche.setEstado(EstadoMotor.ENCENDIDO);
+                this.BotonFrenar.setText("FRENAR");
+                break;
             case ACELERANDO:
-            this.BotonAcelerar.setText("ACELERAR");
-            this.BotonAcelerar.setSelected(false);
+                this.BotonAcelerar.setText("ACELERAR");
+                this.BotonAcelerar.setSelected(false);
             case ENCENDIDO:
-            this.coche.setEstado(EstadoMotor.FRENANDO);
-            this.BotonFrenar.setText("Soltar freno");
-            break;
+                this.coche.setEstado(EstadoMotor.FRENANDO);
+                this.BotonFrenar.setText("Soltar freno");
+                break;
             case APAGADO:
-            this.BotonFrenar.setSelected(false);
-            break;
+                this.BotonFrenar.setSelected(false);
+                break;
         }
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonFrenarActionPerformed
 
     private void BotonMantenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMantenerActionPerformed
-
+        this.BotonAcelerarSCACV.setSelected(false);
+        this.BotonReiniciar.setSelected(false);
+        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.MANTENIENDO);
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonMantenerActionPerformed
-    
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
+
+    private void BotonAcelerarSCACVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAcelerarSCACVActionPerformed
+        this.BotonMantener.setSelected(false);
+        this.BotonReiniciar.setSelected(false);
+        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.ACELERANDO);
+        this.actualizaInterfaz();
+    }//GEN-LAST:event_BotonAcelerarSCACVActionPerformed
+
+    private void BotonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReiniciarActionPerformed
+        this.BotonAcelerarSCACV.setSelected(false);
+        this.BotonMantener.setSelected(false);
+        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.REINICIANDO);
+        this.actualizaInterfaz();
+    }//GEN-LAST:event_BotonReiniciarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
         System.exit(0);
-    }                            
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BotonAcelerar;
+    private javax.swing.JToggleButton BotonAcelerarSCACV;
     private javax.swing.JToggleButton BotonEncender;
     private javax.swing.JToggleButton BotonFrenar;
     private javax.swing.JToggleButton BotonMantener;
     private javax.swing.JToggleButton BotonReiniciar;
     private javax.swing.JLabel EtiqMostrarEstado;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

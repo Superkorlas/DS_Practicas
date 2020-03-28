@@ -24,19 +24,19 @@ public class ControlConsumibles extends javax.swing.JPanel {
     public ControlConsumibles(MonitorConsumos consumos) {
         initComponents();
         this.controlAceite = new ControlConsumible(consumos.getAceite(), "aceite");
-        this.controlAceite.setBounds(0,0, 387, 85);
+        this.controlAceite.setBounds(0, 50, 400, 50);
         this.add(this.controlAceite);
         
         this.controlFrenos = new ControlConsumible(consumos.getFrenos(), "frenos");
-        this.controlFrenos.setBounds(0,100, 387, 85);
+        this.controlFrenos.setBounds(400, 0, 400, 50);
         this.add(this.controlFrenos);
         
         this.controlRevision = new ControlConsumible(consumos.getGeneral(), "revision");
-        this.controlRevision.setBounds(0,200, 387, 85);
+        this.controlRevision.setBounds(400, 50, 400, 50);
         this.add(this.controlRevision);
         
         this.controlCombustible = new ControlConsumible(consumos.getGasolina(), "combustible");
-        this.controlCombustible.setBounds(0,300, 387, 85);
+        this.controlCombustible.setBounds(0,0, 400, 50);
         this.add(this.controlCombustible);
         
         
@@ -56,7 +56,7 @@ public class ControlConsumibles extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

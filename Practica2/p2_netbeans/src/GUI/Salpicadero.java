@@ -8,8 +8,6 @@ package GUI;
 import SCACV.AudiR8;
 import SCACV.EstadoMotor;
 import SCACV.MonitorConsumos;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 
 /**
@@ -21,9 +19,11 @@ public class Salpicadero extends javax.swing.JFrame
     Velocimetro velocimetro = new Velocimetro();
     CuentaKilometros cuentaKilometros = new CuentaKilometros();
     CuentaRevoluciones cuentaRevoluciones = new CuentaRevoluciones();
+    ControlVelocidadCrucero velocidadCrucero = new ControlVelocidadCrucero();
     ControlConsumibles controlConsumibles;
     double radioEje = 0.15;
     PanelBotones controles;
+    private AudiR8 coche;
 
     public PanelBotones getControles() {
         return controles;
@@ -35,32 +35,36 @@ public class Salpicadero extends javax.swing.JFrame
      * Creates new form Salpicadero
      */
     public Salpicadero(AudiR8 coche, MonitorConsumos consumos) {
-        
+        this.coche = coche;
         initComponents();
-        this.setSize(687, 766);
+        this.setSize(800, 900);
         this.setResizable(false);
-        this.controles = new PanelBotones(coche);
+        this.controles = new PanelBotones(this.coche);
         this.controlConsumibles = new ControlConsumibles(consumos);
         
         // Añadimos el panel botones
         this.getContentPane().add(this.controles);
-        this.controles.setBounds(300, 0, 387, 266);  
+        this.controles.setBounds(0, 400, 800, 300);  
         
         //Añadimos el control de consumibles
         this.getContentPane().add(this.controlConsumibles);
-        this.controlConsumibles.setBounds(300, 266, 387, 500);   
+        this.controlConsumibles.setBounds(0, 700, 800, 100);   
         
         //Añadimos el velocimetro
         this.getContentPane().add(this.velocimetro);
-        this.velocimetro.setBounds(0, 0, 300, 100);
+        this.velocimetro.setBounds(0, 0, 400, 150);
         
         //Añadimos el cuenta kilometros
         this.getContentPane().add(this.cuentaKilometros);
-        this.cuentaKilometros.setBounds(0, 200, 300, 160);
+        this.cuentaKilometros.setBounds(0, 150, 400, 200);
+        
+        //Añadimos la velocidad de crucero
+        this.getContentPane().add(this.velocidadCrucero);
+        this.velocidadCrucero.setBounds(400, 150, 400, 200);
         
         //Añadimos el cuentarrevoluciones
         this.getContentPane().add(this.cuentaRevoluciones);
-        this.cuentaRevoluciones.setBounds(0, 400, 300, 100);
+        this.cuentaRevoluciones.setBounds(400, 0, 400, 150);
         
 
         this.setVisible(true);
@@ -69,6 +73,7 @@ public class Salpicadero extends javax.swing.JFrame
     
     public void ejecutar(double revoluciones, EstadoMotor estadoMotor) {
         double velocidad = this.velocimetro.actualiza(revoluciones, this.radioEje);
+        this.velocidadCrucero.actualizar(this.coche.getSCACV().getVelocidadCrucero(), this.radioEje);
         this.cuentaKilometros.actualizar(velocidad, estadoMotor);
         this.cuentaRevoluciones.actualiza(revoluciones);
     }
