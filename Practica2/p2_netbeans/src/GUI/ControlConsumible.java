@@ -5,8 +5,8 @@
  */
 package GUI;
 
-import SCACV.ConsumibleVehiculo;
-import SCACV.EstadoMotor;
+import Car.Consumibles.ConsumibleVehiculo;
+import Car.EstadoMotor;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Observable;

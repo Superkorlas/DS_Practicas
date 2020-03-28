@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import SCACV.MonitorConsumos;
+import Car.Consumibles.MonitorConsumos;
 
 /**
  *

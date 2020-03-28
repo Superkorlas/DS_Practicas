@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package Car;
 
+import Car.Consumibles.MonitorConsumos;
+import Car.Filtros.GestorFiltros;
+import Car.SCACV.GestorSCACV;
 import GUI.Salpicadero;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,10 +61,10 @@ public class AudiR8 extends Thread {
             this.revoluciones = gestorFiltros.ejecutar(this.revoluciones, this.estado);
             this.monitorConsumos.calcular(this.revoluciones, this.estado);
             this.salpicadero.ejecutar(this.revoluciones, this.estado);
-            if (this.monitorConsumos.gasolina.alert) {
+            if (this.monitorConsumos.getGasolina().isAlert()) {
                 this.setEstado(EstadoMotor.APAGADO);
             }
-            this.salpicadero.getControles().actualizarEstado(this.monitorConsumos.gasolina.alert);
+            this.salpicadero.getControles().actualizarEstado(this.monitorConsumos.getGasolina().isAlert());
             try {
                 this.sleep(1000);
             } catch (InterruptedException ex) {

@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package Car.Filtros;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Car.EstadoMotor;
 
 /**
  *
  * @author super
  */
-public class GestorFiltros extends Thread {
-
-    CadenaFiltros filtros;
-
-    GestorFiltros() {
-        this.filtros = new CadenaFiltros();
-    }
+public class RepercutirRozamiento implements Filtro {
     
+    double repercusion = 1;
+
+    @Override
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor) {
-        return this.filtros.ejecutar(revoluciones, estadoMotor);
+        if (revoluciones > 0)
+            return revoluciones -= this.repercusion;
+        else
+            return revoluciones = 0.0;
     }
+
 }

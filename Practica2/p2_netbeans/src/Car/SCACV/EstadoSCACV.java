@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package Car.SCACV;
 
 /**
  *
- * @author super
+ * @author jose
  */
-public enum EstadoMotor {
-    ACELERANDO,
-    FRENANDO,
+public enum EstadoSCACV {
     APAGADO,
-    ENCENDIDO
+    REINICIANDO,
+    ACELERANDO,
+    MANTENIENDO
 }

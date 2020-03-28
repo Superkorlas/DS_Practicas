@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import SCACV.EstadoMotor;
+import Car.EstadoMotor;
 import Utils.Clock;
 
 /**

@@ -5,9 +5,9 @@
  */
 package GUI;
 
-import SCACV.AudiR8;
-import SCACV.EstadoMotor;
-import SCACV.MonitorConsumos;
+import Car.AudiR8;
+import Car.EstadoMotor;
+import Car.Consumibles.MonitorConsumos;
 
 
 /**

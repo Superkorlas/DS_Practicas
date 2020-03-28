@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package Car.Consumibles;
 
+import Car.EstadoMotor;
 import Utils.Clock;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -26,6 +27,10 @@ public class ConsumibleVehiculo extends Observable implements Consumible {
         this.alert = false;
         this.MAX = maximo;
         this.actual = this.MAX;
+    }
+    
+    public boolean isAlert() {
+        return this.alert;
     }
 
     @Override

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package Car.Consumibles;
 
+import Car.EstadoMotor;
 import GUI.Salpicadero;
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class MonitorConsumos {
     
     Salpicadero salpicadero;
-    ConsumibleVehiculo gasolina;
+     ConsumibleVehiculo gasolina;
     ConsumibleVehiculo aceite;
     ConsumibleVehiculo frenos;
     ConsumibleVehiculo general;

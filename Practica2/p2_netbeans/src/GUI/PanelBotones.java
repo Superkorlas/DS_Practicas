@@ -5,9 +5,9 @@
  */
 package GUI;
 
-import SCACV.AudiR8;
-import SCACV.EstadoMotor;
-import SCACV.EstadoSCACV;
+import Car.AudiR8;
+import Car.EstadoMotor;
+import Car.SCACV.EstadoSCACV;
 import java.awt.Color;
 
 /**
@@ -268,23 +268,36 @@ public class PanelBotones extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonFrenarActionPerformed
 
     private void BotonMantenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMantenerActionPerformed
+        if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.MANTENIENDO) {
+            this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
+        } else {
+            this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.MANTENIENDO);
+        }
         this.BotonAcelerarSCACV.setSelected(false);
         this.BotonReiniciar.setSelected(false);
-        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.MANTENIENDO);
+        
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonMantenerActionPerformed
 
     private void BotonAcelerarSCACVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAcelerarSCACVActionPerformed
+        if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.ACELERANDO) {
+            this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
+        } else {
+            this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.ACELERANDO);
+        }
         this.BotonMantener.setSelected(false);
         this.BotonReiniciar.setSelected(false);
-        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.ACELERANDO);
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonAcelerarSCACVActionPerformed
 
     private void BotonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReiniciarActionPerformed
+        if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.REINICIANDO) {
+            this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
+        } else {
+            this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.REINICIANDO);
+        }
         this.BotonAcelerarSCACV.setSelected(false);
         this.BotonMantener.setSelected(false);
-        this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.REINICIANDO);
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonReiniciarActionPerformed
 

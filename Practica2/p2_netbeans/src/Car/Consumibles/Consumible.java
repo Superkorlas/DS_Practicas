@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SCACV;
+package Car.Consumibles;
+
+import Car.EstadoMotor;
 
 /**
  *
  * @author jose
  */
-public enum EstadoSCACV {
-    APAGADO,
-    REINICIANDO,
-    ACELERANDO,
-    MANTENIENDO
+public interface Consumible {
+    public void calcularConsumo(double revoluciones, EstadoMotor estadoMotor);
+    public void reset();
 }
