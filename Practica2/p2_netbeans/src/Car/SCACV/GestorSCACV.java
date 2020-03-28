@@ -45,7 +45,7 @@ public class GestorSCACV {
                 break;
             case REINICIANDO:
                 salida = this.ajustarVelocidad(revoluciones);
-                if (revoluciones == this.velocidadCrucero) {
+                if ((revoluciones - this.velocidadCrucero) <= 100) {
                     this.estadoSCACV = EstadoSCACV.MANTENIENDO;
                     this.velocidadGuardada = true;
                 }

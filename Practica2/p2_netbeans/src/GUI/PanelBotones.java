@@ -43,6 +43,29 @@ public class PanelBotones extends javax.swing.JPanel {
             this.BotonReiniciar.setSelected(false);
             this.BotonAcelerarSCACV.setSelected(false);
         }
+        
+        switch (this.coche.getSCACV().getEstadoSCACV()) {
+            case APAGADO:
+                this.BotonAcelerarSCACV.setSelected(false);
+                this.BotonMantener.setSelected(false);
+                this.BotonReiniciar.setSelected(false);
+                break;
+            case ACELERANDO:
+                this.BotonAcelerarSCACV.setSelected(true);
+                this.BotonMantener.setSelected(false);
+                this.BotonReiniciar.setSelected(false);
+                break;
+            case MANTENIENDO:
+                this.BotonAcelerarSCACV.setSelected(false);
+                this.BotonMantener.setSelected(true);
+                this.BotonReiniciar.setSelected(false);
+                break;
+            case REINICIANDO:
+                this.BotonAcelerarSCACV.setSelected(false);
+                this.BotonMantener.setSelected(false);
+                this.BotonReiniciar.setSelected(true);
+                break;
+        }
 
         if (this.BotonEncender.isSelected()) {
             this.BotonEncender.setForeground(Color.red);
@@ -105,6 +128,7 @@ public class PanelBotones extends javax.swing.JPanel {
         BotonMantener = new javax.swing.JToggleButton();
         BotonReiniciar = new javax.swing.JToggleButton();
         BotonAcelerarSCACV = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(387, 266));
 
@@ -154,55 +178,59 @@ public class PanelBotones extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel1.setText("SCACV");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EtiqMostrarEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(BotonAcelerarSCACV))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(BotonAcelerar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                                        .addComponent(BotonMantener))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(BotonFrenar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(BotonReiniciar)))))
-                        .addGap(55, 55, 55)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(33, Short.MAX_VALUE)
+                        .addComponent(BotonEncender, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(EtiqMostrarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(BotonFrenar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(BotonAcelerar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonReiniciar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(BotonMantener))
+                    .addComponent(BotonAcelerarSCACV))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(BotonEncender)
-                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(EtiqMostrarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonEncender, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonAcelerar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonMantener))
-                .addGap(1, 1, 1)
-                .addComponent(BotonAcelerarSCACV)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonFrenar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonReiniciar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BotonMantener, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotonAcelerarSCACV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(BotonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BotonAcelerar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonFrenar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BotonEncender, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EtiqMostrarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(55, 55, 55))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -225,6 +253,10 @@ public class PanelBotones extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonEncenderActionPerformed
 
     private void BotonAcelerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAcelerarActionPerformed
+        if (this.coche.getSCACV().getEstadoSCACV() != EstadoSCACV.APAGADO) {
+            this.coche.setEstado(EstadoMotor.ENCENDIDO);
+        }
+        
         this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
 
         switch (this.coche.getEstado()) {
@@ -247,6 +279,10 @@ public class PanelBotones extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonAcelerarActionPerformed
 
     private void BotonFrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFrenarActionPerformed
+        if (this.coche.getSCACV().getEstadoSCACV() != EstadoSCACV.APAGADO) {
+            this.coche.setEstado(EstadoMotor.ENCENDIDO);
+        }
+        
         this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
         switch (this.coche.getEstado()) {
             case FRENANDO:
@@ -273,8 +309,6 @@ public class PanelBotones extends javax.swing.JPanel {
         } else {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.MANTENIENDO);
         }
-        this.BotonAcelerarSCACV.setSelected(false);
-        this.BotonReiniciar.setSelected(false);
         
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonMantenerActionPerformed
@@ -285,8 +319,6 @@ public class PanelBotones extends javax.swing.JPanel {
         } else {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.ACELERANDO);
         }
-        this.BotonMantener.setSelected(false);
-        this.BotonReiniciar.setSelected(false);
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonAcelerarSCACVActionPerformed
 
@@ -296,8 +328,6 @@ public class PanelBotones extends javax.swing.JPanel {
         } else {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.REINICIANDO);
         }
-        this.BotonAcelerarSCACV.setSelected(false);
-        this.BotonMantener.setSelected(false);
         this.actualizaInterfaz();
     }//GEN-LAST:event_BotonReiniciarActionPerformed
 
@@ -313,5 +343,6 @@ public class PanelBotones extends javax.swing.JPanel {
     private javax.swing.JToggleButton BotonMantener;
     private javax.swing.JToggleButton BotonReiniciar;
     private javax.swing.JLabel EtiqMostrarEstado;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
