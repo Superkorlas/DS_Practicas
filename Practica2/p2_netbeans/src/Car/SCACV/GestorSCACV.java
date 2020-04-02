@@ -35,29 +35,32 @@ public class GestorSCACV {
     
     public EstadoMotor ejecutar(double revoluciones, EstadoMotor estado) {
         EstadoMotor salida = estado;
-        switch (this.estadoSCACV) {
-            case MANTENIENDO:
-                if (!this.velocidadGuardada) {
-                    this.velocidadCrucero = revoluciones;
-                    this.velocidadGuardada = true;
-                }
-                salida = this.ajustarVelocidad(revoluciones);
-                break;
-            case REINICIANDO:
-                salida = this.ajustarVelocidad(revoluciones);
-                if ((revoluciones - this.velocidadCrucero) <= 100) {
-                    this.estadoSCACV = EstadoSCACV.MANTENIENDO;
-                    this.velocidadGuardada = true;
-                }
-                break;
-            case ACELERANDO:
-                salida = EstadoMotor.ACELERANDO;
-                break;
-            case APAGADO:
-                this.velocidadGuardada = false;
-                if (estado == EstadoMotor.APAGADO)
-                    this.velocidadCrucero = 0.0;
-                break;
+        
+        if (estado != EstadoMotor.APAGADO) {
+            switch (this.estadoSCACV) {
+                case MANTENIENDO:
+                    if (!this.velocidadGuardada) {
+                        this.velocidadCrucero = revoluciones;
+                        this.velocidadGuardada = true;
+                    }
+                    salida = this.ajustarVelocidad(revoluciones);
+                    break;
+                case REINICIANDO:
+                    salida = this.ajustarVelocidad(revoluciones);
+                    if ((revoluciones - this.velocidadCrucero) <= 100) {
+                        this.estadoSCACV = EstadoSCACV.MANTENIENDO;
+                        this.velocidadGuardada = true;
+                    }
+                    break;
+                case ACELERANDO:
+                    salida = EstadoMotor.ACELERANDO;
+                    break;
+                case APAGADO:
+                    this.velocidadGuardada = false;
+                    if (estado == EstadoMotor.APAGADO)
+                        this.velocidadCrucero = 0.0;
+                    break;
+            }
         }
         return salida;
 
