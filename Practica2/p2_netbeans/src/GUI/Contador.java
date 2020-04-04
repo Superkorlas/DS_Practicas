@@ -11,22 +11,28 @@ import java.awt.BorderLayout;
 
 /**
  *
- * @author super
+ * @author alejandro
  */
-public class Velocimetro extends Contador {
-        
-    /**
-     * Creates new form Velocimetro
-     */
-    public Velocimetro() {
-        super("Velocimetro", 250);
-    }
+public class Contador extends javax.swing.JPanel {
 
-    public double actualiza(double revoluciones, double radioEje) {
-        double velocidad = CarOperation.velocidad(revoluciones, radioEje);
-        this.indicador.setValueAnimated(velocidad);
-        this.indicador.setUnitString(Double.toString(velocidad));
-        return velocidad;
+    Radial indicador;
+    
+    /**
+     * Creates new form Contador
+     */
+    public Contador(String title, int maxValue) {
+        initComponents();
+        
+        this.indicador = new Radial();
+        this.indicador.setTitle(title);
+        this.indicador.setUnitString("0");
+        this.indicador.setMaxValue(maxValue);
+        
+        this.setLayout(new BorderLayout());
+        this.add(this.indicador, BorderLayout.CENTER);
+        
+        
+        this.setVisible(true);
     }
 
     /**
@@ -42,11 +48,11 @@ public class Velocimetro extends Contador {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -37,34 +37,34 @@ public class Salpicadero extends javax.swing.JFrame
     public Salpicadero(AudiR8 coche, MonitorConsumos consumos) {
         this.coche = coche;
         initComponents();
-        this.setSize(800, 900);
+        this.setSize(800, 1000);
         this.setResizable(false);
         this.controles = new PanelBotones(this.coche);
         this.controlConsumibles = new ControlConsumibles(consumos);
         
         // Añadimos el panel botones
         this.getContentPane().add(this.controles);
-        this.controles.setBounds(0, 400, 800, 300);  
+        this.controles.setBounds(0, 500, 800, 300);  
         
         //Añadimos el control de consumibles
         this.getContentPane().add(this.controlConsumibles);
-        this.controlConsumibles.setBounds(0, 700, 800, 100);   
+        this.controlConsumibles.setBounds(0, 800, 800, 100);   
         
         //Añadimos el velocimetro
         this.getContentPane().add(this.velocimetro);
-        this.velocimetro.setBounds(0, 0, 400, 150);
+        this.velocimetro.setBounds(0, 0, 400, 250);
         
         //Añadimos el cuenta kilometros
         this.getContentPane().add(this.cuentaKilometros);
-        this.cuentaKilometros.setBounds(0, 150, 400, 200);
+        this.cuentaKilometros.setBounds(0, 300, 400, 200);
         
         //Añadimos la velocidad de crucero
         this.getContentPane().add(this.velocidadCrucero);
-        this.velocidadCrucero.setBounds(400, 150, 400, 200);
+        this.velocidadCrucero.setBounds(400, 300, 400, 200);
         
         //Añadimos el cuentarrevoluciones
         this.getContentPane().add(this.cuentaRevoluciones);
-        this.cuentaRevoluciones.setBounds(400, 0, 400, 150);
+        this.cuentaRevoluciones.setBounds(400, 0, 400, 250);
         
 
         this.setVisible(true);
