@@ -304,7 +304,9 @@ public class PanelBotones extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonFrenarActionPerformed
 
     private void BotonMantenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMantenerActionPerformed
-        if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.MANTENIENDO) {
+        if (this.coche.getEstado() == EstadoMotor.APAGADO) {
+            this.BotonMantener.setSelected(false);
+        }else if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.MANTENIENDO) {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
         } else {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.MANTENIENDO);
@@ -314,7 +316,9 @@ public class PanelBotones extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonMantenerActionPerformed
 
     private void BotonAcelerarSCACVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAcelerarSCACVActionPerformed
-        if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.ACELERANDO) {
+        if (this.coche.getEstado() == EstadoMotor.APAGADO) {
+            this.BotonAcelerarSCACV.setSelected(false);
+        }else if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.ACELERANDO) {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
         } else {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.ACELERANDO);
@@ -323,7 +327,9 @@ public class PanelBotones extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonAcelerarSCACVActionPerformed
 
     private void BotonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReiniciarActionPerformed
-        if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.REINICIANDO) {
+        if (this.coche.getEstado() == EstadoMotor.APAGADO) {
+            this.BotonReiniciar.setSelected(false);
+        }else if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.REINICIANDO) {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
         } else {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.REINICIANDO);

@@ -5,22 +5,38 @@
  */
 package GUI;
 
+import eu.hansolo.steelseries.gauges.Radial;
+import java.awt.BorderLayout;
+
 /**
  *
  * @author alejandro
  */
 public class CuentaRevoluciones extends javax.swing.JPanel {
-
+    
+    Radial gauge = new Radial();
+    
     /**
      * Creates new form CuentaRevoluciones
      */
     public CuentaRevoluciones() {
         initComponents();
+        
+        this.gauge = new Radial();
+        this.gauge.setTitle("Cuenta Revoluciones");
+        this.gauge.setUnitString("0");
+        this.gauge.setMaxValue(5000);
+        
+        this.setLayout(new BorderLayout());
+        this.add(this.gauge, BorderLayout.CENTER);
+        
+        
         this.setVisible(true);
     }
     
     public void actualiza(double revoluciones) {
-        this.revoluciones.setText(Double.toString(revoluciones));
+        this.gauge.setValueAnimated(revoluciones);
+        this.gauge.setUnitString(Double.toString(revoluciones));
     }
 
     /**
@@ -32,49 +48,29 @@ public class CuentaRevoluciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        revoluciones = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(300, 100));
         setMinimumSize(new java.awt.Dimension(300, 100));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cuentarrevoluciones");
-
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("RPM");
-
-        revoluciones.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        revoluciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        revoluciones.setText("0.0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(revoluciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(revoluciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -82,8 +78,6 @@ public class CuentaRevoluciones extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel revoluciones;
     // End of variables declaration//GEN-END:variables
 }
