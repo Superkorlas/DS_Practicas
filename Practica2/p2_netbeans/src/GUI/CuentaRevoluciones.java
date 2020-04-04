@@ -12,31 +12,18 @@ import java.awt.BorderLayout;
  *
  * @author alejandro
  */
-public class CuentaRevoluciones extends javax.swing.JPanel {
-    
-    Radial gauge = new Radial();
-    
+public class CuentaRevoluciones extends Contador {
+        
     /**
      * Creates new form CuentaRevoluciones
      */
     public CuentaRevoluciones() {
-        initComponents();
-        
-        this.gauge = new Radial();
-        this.gauge.setTitle("Cuenta Revoluciones");
-        this.gauge.setUnitString("0");
-        this.gauge.setMaxValue(5000);
-        
-        this.setLayout(new BorderLayout());
-        this.add(this.gauge, BorderLayout.CENTER);
-        
-        
-        this.setVisible(true);
+        super("Revoluciones", 5000);
     }
     
     public void actualiza(double revoluciones) {
-        this.gauge.setValueAnimated(revoluciones);
-        this.gauge.setUnitString(Double.toString(revoluciones));
+        this.indicador.setValueAnimated(revoluciones);
+        this.indicador.setUnitString(Double.toString(revoluciones));
     }
 
     /**
@@ -48,36 +35,23 @@ public class CuentaRevoluciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-
         setMaximumSize(new java.awt.Dimension(300, 100));
         setMinimumSize(new java.awt.Dimension(300, 100));
-
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("RPM");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(262, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+            .addGap(0, 152, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

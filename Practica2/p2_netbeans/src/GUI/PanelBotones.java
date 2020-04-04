@@ -306,9 +306,7 @@ public class PanelBotones extends javax.swing.JPanel {
     private void BotonMantenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMantenerActionPerformed
         if (this.coche.getEstado() == EstadoMotor.APAGADO) {
             this.BotonMantener.setSelected(false);
-        }else if (this.coche.getSCACV().getEstadoSCACV() == EstadoSCACV.MANTENIENDO) {
-            this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.APAGADO);
-        } else {
+        }else if (this.coche.getSCACV().getEstadoSCACV() != EstadoSCACV.MANTENIENDO) {
             this.coche.getSCACV().setEstadoSCACV(EstadoSCACV.MANTENIENDO);
         }
         
