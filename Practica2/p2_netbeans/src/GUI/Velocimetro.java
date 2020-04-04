@@ -6,24 +6,37 @@
 package GUI;
 
 import Utils.CarOperation;
+import eu.hansolo.steelseries.gauges.Radial;
+import java.awt.BorderLayout;
 
 /**
  *
  * @author super
  */
 public class Velocimetro extends javax.swing.JPanel {
-
+    
+    Radial gauge;
+    
     /**
      * Creates new form Velocimetro
      */
     public Velocimetro() {
         initComponents();
+        this.gauge = new Radial();
+        this.gauge.setTitle("Velocimetro");
+        this.gauge.setUnitString("0");
+        this.gauge.setMaxValue(300);
+        
+        this.setLayout(new BorderLayout());
+        this.add(this.gauge, BorderLayout.CENTER);
+        
         this.setVisible(true);
     }
 
     public double actualiza(double revoluciones, double radioEje) {
         double velocidad = CarOperation.velocidad(revoluciones, radioEje);
-        this.velocidad.setText(Double.toString(velocidad));
+        this.gauge.setValueAnimated(velocidad);
+        this.gauge.setUnitString(Double.toString(velocidad));
         return velocidad;
     }
 
@@ -36,54 +49,19 @@ public class Velocimetro extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        velocidad = new javax.swing.JLabel();
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Velocimetro");
-
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel2.setText("Km/h");
-
-        velocidad.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        velocidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        velocidad.setText("0.0");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 140, Short.MAX_VALUE)
-                        .addComponent(velocidad, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(velocidad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+            .addGap(0, 150, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel velocidad;
     // End of variables declaration//GEN-END:variables
 }
