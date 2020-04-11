@@ -25,6 +25,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     Equipo* equipo = new Equipo(25, 150, 250);
+    Equipo* equipo2 = new Equipo(12,12,12);
     
     VisitanteEquipo* visitantePrecio = new VisitantePrecio(SIN_DESCUENTO);
     equipo->aceptarVisitante(*visitantePrecio);
@@ -37,6 +38,11 @@ int main(int argc, char** argv) {
     VisitanteEquipo* visitantePrecioDetallado2 = new VisitantePrecioDetalle(MAYORISTA);
     equipo->aceptarVisitante(*visitantePrecioDetallado2);
     visitantePrecioDetallado2->ImprimirResultado();
+    
+    std::cout <<"----------------------" << std::endl;
+    equipo2->aceptarVisitante(*visitantePrecio);
+    visitantePrecio->ImprimirResultado();
+
     
     return 0;
 }
